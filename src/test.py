@@ -12,7 +12,7 @@ db = pymysql.connect(host='db-capstone.cbo8gwqsco77.ap-northeast-2.rds.amazonaws
 app = Flask(__name__)
 
 
-def get_entity_list_in_table(db, table_name: str) -> list[tuple]:
+def get_entity_list_in_table(db, table_name: str) -> list[tuple[str, str]]:
     try:
         with db.cursor() as cursor:
             print("hello")
