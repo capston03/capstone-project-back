@@ -24,6 +24,17 @@ def get_entity_list_in_table(db, table_name: str) -> list[tuple]:
         return ("nil", "nil")
 
 
+def add_user(db, user: User):
+    try:
+        with db.cursor() as cursor:
+            sql = f"INSERT INTO user(nickname, google_id, birthday) VALUES(\"{user.nickname}\", \"{user.google_id}\", \"{user.birthday.to_string()}\");"
+            print(sql)
+            cursor.execute(sql)
+            db.commit()
+    except Exception as e:
+        print(f"err : {e}")
+
+
 @app.route("/")
 def home():
     return "Hello, World"
@@ -36,22 +47,21 @@ def showBeacons():
     return html_code
 
 
-@app.route("/user", methods=("POST", "GET"))
-def users():
+@app.route("/add_user", methods=("POST", "GET"))
+def add_new_user():
     if request.method == "POST":
         nickname = request.form.get("nickname")
         google_id = request.form.get("google_id")
         birthday = request.form.get("birthday")
         new_user = User(nickname, google_id, birthday)
+        add_user(db, new_user)
         return new_user.html()
     else:
-        user_list = get_entity_list_in_table(db, "user")
-        html_code = str(user_list)
-        return html_code
+        return render_template("add_new_user.html")
 
 
 @app.route("/users")
-def showUsers():
+def show_users():
     user_list = get_entity_list_in_table(db, "user")
     html_code = str(user_list)
     return html_code

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new user!</title>
+</head>
+
+<body>
+    <form action="/add_user" method="post">
+        <legend>새로운 유저 정보 추가</legend>
+        <label for="nickname">닉네임</label>
+        <input type="text" id="nickname" name="nickname">
+        <br>
+        <label for="google_id">구글 ID</label>
+        <input type="text" id="google_id" name="google_id">
+        <br>
+        <label for="birthday">생일</label>
+        <input type="date" id="birthday" name="birthday" value="1997-06-20" min="1900-01-01" max="2022-04-04">
+        <br>
+        <button type="submit">제출하기</button>
+    </form>
+</body>
+
+</html>

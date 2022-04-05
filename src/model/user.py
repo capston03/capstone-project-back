@@ -8,22 +8,33 @@ class User:
             self.month = month
             self.day = day
 
+        def to_string(self):
+            return f"{self.year}-{self.month}-{self.day}"
+
     def _parse_time(self, birthday: str) -> Time:
-        p = "^datetime\.date\((\d+), (\d+), (\d+)\)$"
+        p = "^(\d{4})-(\d{2})-(\d{2})$"
         capture_result = re.search(p, birthday)
-        if len(capture_result) != 4:
+        group = capture_result.groups()
+        if len(group) != 3:
             raise Exception("Input is invalid.")
         else:
-            return User.Time(capture_result[1], capture_result[2], capture_result[3])
+            return User.Time(group[0], group[1], group[2])
 
     def __init__(self, nickname: str, google_id: str, birthday: Time):
         self.nickname = nickname
         self.google_id = google_id
         self.birthday = self._parse_time(birthday)
 
-    def convert_to_html(self) -> str:
+    def html(self) -> str:
         html_code = ""
-        for key, val in range(self.__dict__):
-            html_code += "----"
-            html_code += f"key:{key}\nval:{val}"
+        html_code += "<p>----<br>"
+        for key, val in self.__dict__.items():
+            html_code += "<p>"
+            html_code += f"key : {key}<br>"
+            if type(val) is User.Time:
+                html_code += f"val : {val.to_string()}"
+            else:
+                html_code += f"val : {val}"
+            html_code += "</p>"
+        html_code += "</p>"
         return html_code
