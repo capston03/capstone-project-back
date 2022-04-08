@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3.11-rc-bullseye
 COPY src /app
 COPY docker /docker
 RUN pip3 install -r docker/requirements.txt
