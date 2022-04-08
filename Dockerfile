@@ -2,6 +2,9 @@ FROM python:3.8-slim
 
 COPY ./src/ /app
 
+
+RUN ls -al /app/*
+
 RUN pip3 install flask
 
 WORKDIR /app
