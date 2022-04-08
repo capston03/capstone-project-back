@@ -23,9 +23,9 @@ db = pymysql.connect(host='db-capstone.cbo8gwqsco77.ap-northeast-2.rds.amazonaws
 app = Flask(__name__)
 
 
-def get_entity_list_in_table(db, table_name: str) -> list[tuple[str, str]]:
+def get_entity_list_in_table(_db, table_name: str):
     try:
-        with db.cursor() as cursor:
+        with _db.cursor() as cursor:
             print("hello")
             sql = f"SELECT * FROM {table_name};"
             cursor.execute(sql)
@@ -52,7 +52,7 @@ def home():
 
 
 @app.route("/beacon")
-def showBeacons():
+def show_beacons():
     beacon_list = get_entity_list_in_table(db, "beacon")
     html_code = str(beacon_list)
     return html_code
