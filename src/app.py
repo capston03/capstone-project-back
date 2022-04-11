@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 
 from src.handler_db import HandlerDb
+from src.handler_user_db import HandlerUserDb
 from src.model.user import User
 
 app = Flask(__name__)
@@ -15,17 +16,7 @@ db_info: dict[str, any] = {
 }
 
 handler_db = HandlerDb(**db_info)
-
-
-# def add_user(db, user: User):
-#     try:
-#         with db.cursor() as cursor:
-#             sql = f"INSERT INTO user(nickname, google_id, birthday) VALUES(\"{user.nickname}\", \"{user.google_id}\", \"{user.birthday.to_string()}\");"
-#             print(sql)
-#             cursor.execute(sql)
-#             db.commit()
-#     except Exception as e:
-#         print(f"err : {e}")
+handler_user_db = HandlerUserDb(handler_db)
 
 
 @app.route("/")
@@ -39,44 +30,19 @@ def show_beacons():
     return str(list_beacon)
 
 
-# @app.route("/add_user", methods=("POST", "GET"))
-# def add_new_user():
-#     if request.method == "POST":
-#         nickname = request.form.get("nickname")
-#         google_id = request.form.get("google_id")
-#         birthday = request.form.get("birthday")
-#         new_user = User(nickname, google_id, birthday)
-#         add_user(db, new_user)
-#         return new_user.html()
-#     else:
-#         return render_template("add_new_user.html")
-
-
-# def search_user(gmail_addr: str) -> bool:
-#     try:
-#         with _db.cursor() as cursor:
-#             print("hello")
-#             sql = f"SELECT * FROM {table_name};"
-#             cursor.execute(sql)
-#             return cursor.fetchall()
-#     except Exception as e:
-#         print(e)
-#         return list()
-
-
 @app.route("/login", methods=["POST"])
 def login():
     if not request.is_json:
         return "NOT JSON"
     params: dict[str, str] = request.get_json()
     gmail_id = params.get("gmail_id")
-    is_user_existed = handler_db.is_user_existed(gmail_id)
-    if not is_user_existed:
+    is_account_existed = handler_user_db.is_account_existed(gmail_id)
+    if not is_account_existed:
         return "USER ACCOUNT IS NOT EXISTED"
-    is_user_active = handler_db.is_user_already_logged_in(gmail_id)
-    can_login = is_user_existed and not is_user_active
+    is_user_active = handler_user_db.is_user_already_logged_in(gmail_id)
+    can_login = is_account_existed and not is_user_active
     if can_login:
-        handler_db.login(gmail_id)
+        handler_user_db.login(gmail_id)
         return "LOGIN SUCCESS"
     else:
         return "USER IS ALREADY LOGGED IN"
@@ -88,16 +54,40 @@ def logout():
         return "NOT JSON"
     params: dict[str, str] = request.get_json()
     gmail_id = params.get("gmail_id")
-    is_user_existed = handler_db.is_user_existed(gmail_id)
-    if not is_user_existed:
+    is_account_existed = handler_user_db.is_account_existed(gmail_id)
+    if not is_account_existed:
         return "USER ACCOUNT IS NOT EXISTED"
-    is_user_active = handler_db.is_user_already_logged_in(gmail_id)
-    can_logout = is_user_existed and is_user_active
+    is_user_active = handler_user_db.is_user_already_logged_in(gmail_id)
+    can_logout = is_account_existed and is_user_active
     if can_logout:
-        handler_db.logout(gmail_id)
+        handler_user_db.logout(gmail_id)
         return "LOGOUT SUCCESS"
     else:
         return "USER IS ALREADY LOGGED OUT"
+
+
+@app.route("/signup", methods=["POST"])
+def signup():
+    if not request.is_json:
+        return "NOT JSON"
+    params: dict[str, str] = request.get_json()
+    if "nickname" not in params \
+            or "gmail_id" not in params \
+            or "birthday" not in params \
+            or "identity" not in params:
+        return "NOT VALID USER INFO"
+    user = User(params.get("nickname"),
+                params.get("gmail_id"),
+                params.get("birthday"),
+                params.get("identity"),
+                1)
+    result = handler_user_db.signup(user)
+    if result == HandlerUserDb.DbState.NICKNAME_ALREADY_EXISTED:
+        return "NICKNAME IS ALREADY USED"
+    elif result == HandlerUserDb.DbState.ACCOUNT_ALREADY_EXISTED:
+        return "ACCOUNT IS ALREADY EXISTED"
+    else:
+        return "SIGNUP SUCCESS"
 
 
 @app.route("/users")

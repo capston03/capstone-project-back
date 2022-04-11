@@ -2,9 +2,17 @@ import pymysql
 
 from src.handler_db import HandlerDb
 from src.model.user import User
+from enum import Enum
+from enum import auto
 
 
 class HandlerUserDb:
+    class DbState(Enum):
+        NICKNAME_ALREADY_EXISTED = auto()
+        ACCOUNT_ALREADY_EXISTED = auto()
+        UNKNOWN_ERROR = auto()
+        OK = auto()
+
     def __init__(self, handler_db: HandlerDb):
         self.__handler_db = handler_db
 
@@ -76,10 +84,11 @@ class HandlerUserDb:
                 print(f"error : {e}")
                 return False
 
-    def signup(self, user: User):
-        if not self.is_nickname_existed(user.nickname) and \
-                not self.is_account_existed(user.gmail_id):
-            return False
+    def signup(self, user: User) -> DbState:
+        if self.is_nickname_existed(user.nickname):
+            return HandlerUserDb.DbState.NICKNAME_ALREADY_EXISTED
+        elif self.is_account_existed(user.gmail_id):
+            return HandlerUserDb.DbState.ACCOUNT_ALREADY_EXISTED
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -91,7 +100,7 @@ class HandlerUserDb:
                           f"'{user.is_active}')"
                     cursor.execute(sql)
                     db.commit()
-                    return True
+                    return HandlerUserDb.DbState.OK
             except Exception as e:
                 print(f"error : {e}")
-                return False
+                return HandlerUserDb.DbState.UNKNOWN_ERROR
