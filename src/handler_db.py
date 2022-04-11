@@ -1,6 +1,7 @@
 # host='db-capstone.cbo8gwqsco77.ap-northeast-2.rds.amazonaws.com',
 #                      port=3306, user='dbadmin', passwd='rootroot22', db='db_capstone', charset='utf8mb4'
 import pymysql
+from typing import Dict
 
 
 class HandlerDb:
@@ -26,7 +27,7 @@ class HandlerDb:
                                db=self.__db_name,
                                charset=self.__charset)
 
-    def get_all(self, table_name: str) -> dict[str, any]:
+    def get_all(self, table_name: str) -> Dict[str, any]:
         with self.connect_db() as db:
             try:
                 with db.cursor() as cursor:

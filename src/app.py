@@ -1,14 +1,14 @@
 import sys
 
 from flask import Flask, render_template, request
-
+from typing import List, Dict
 from handler_db import HandlerDb
 from handler_user_db import HandlerUserDb
 from model.user import User
 
 app = Flask(__name__)
 
-db_info: dict[str, any] = {
+db_info: Dict[str, any] = {
     "host": "db-capstone.cbo8gwqsco77.ap-northeast-2.rds.amazonaws.com",
     "port": 3306,
     "user": "dbadmin",
@@ -36,7 +36,7 @@ def show_beacons():
 def login():
     if not request.is_json:
         return "NOT JSON"
-    params: dict[str, str] = request.get_json()
+    params: Dict[str, str] = request.get_json()
     gmail_id = params.get("gmail_id")
     is_account_existed = handler_user_db.is_account_existed(gmail_id)
     if not is_account_existed:
@@ -54,7 +54,7 @@ def login():
 def logout():
     if not request.is_json:
         return "NOT JSON"
-    params: dict[str, str] = request.get_json()
+    params: Dict[str, str] = request.get_json()
     gmail_id = params.get("gmail_id")
     is_account_existed = handler_user_db.is_account_existed(gmail_id)
     if not is_account_existed:
@@ -72,7 +72,7 @@ def logout():
 def signup():
     if not request.is_json:
         return "NOT JSON"
-    params: dict[str, str] = request.get_json()
+    params: Dict[str, str] = request.get_json()
     if "nickname" not in params \
             or "gmail_id" not in params \
             or "birthday" not in params \
