@@ -65,12 +65,39 @@ def show_beacons():
 
 
 @app.route("/login", methods=["POST"])
-def login() -> bool:
+def login():
     if not request.is_json:
-        return False
+        return "NOT JSON"
     params: dict[str, str] = request.get_json()
-    gmail_addr = params.get("gmail_addr")
-    return handler_db.is_user_existed(gmail_addr)
+    gmail_id = params.get("gmail_id")
+    is_user_existed = handler_db.is_user_existed(gmail_id)
+    if not is_user_existed:
+        return "USER ACCOUNT IS NOT EXISTED"
+    is_user_active = handler_db.is_user_already_logged_in(gmail_id)
+    can_login = is_user_existed and not is_user_active
+    if can_login:
+        handler_db.login(gmail_id)
+        return "LOGIN SUCCESS"
+    else:
+        return "USER IS ALREADY LOGGED IN"
+
+
+@app.route("/logout", methods=["POST"])
+def logout():
+    if not request.is_json:
+        return "NOT JSON"
+    params: dict[str, str] = request.get_json()
+    gmail_id = params.get("gmail_id")
+    is_user_existed = handler_db.is_user_existed(gmail_id)
+    if not is_user_existed:
+        return "USER ACCOUNT IS NOT EXISTED"
+    is_user_active = handler_db.is_user_already_logged_in(gmail_id)
+    can_logout = is_user_existed and is_user_active
+    if can_logout:
+        handler_db.logout(gmail_id)
+        return "LOGOUT SUCCESS"
+    else:
+        return "USER IS ALREADY LOGGED OUT"
 
 
 @app.route("/users")
@@ -86,4 +113,4 @@ def boards():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8000)

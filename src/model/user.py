@@ -20,21 +20,13 @@ class User:
         else:
             return User.Time(group[0], group[1], group[2])
 
-    def __init__(self, nickname: str, google_id: str, birthday: Time):
+    def __init__(self, nickname: str,
+                 gmail_id: str,
+                 birthday: str,
+                 identity: str,
+                 is_active: bool):
         self.nickname = nickname
-        self.google_id = google_id
+        self.gmail_id = gmail_id
         self.birthday = self._parse_time(birthday)
-
-    def html(self) -> str:
-        html_code = ""
-        html_code += "<p>----<br>"
-        for key, val in self.__dict__.items():
-            html_code += "<p>"
-            html_code += f"key : {key}<br>"
-            if type(val) is User.Time:
-                html_code += f"val : {val.to_string()}"
-            else:
-                html_code += f"val : {val}"
-            html_code += "</p>"
-        html_code += "</p>"
-        return html_code
+        self.identity = identity
+        self.is_active = is_active
