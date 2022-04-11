@@ -1,12 +1,12 @@
 import sys
 
+sys.path.insert(0, '../src')
+
 from flask import Flask, render_template, request
 
 from src.handler_db import HandlerDb
 from src.handler_user_db import HandlerUserDb
 from src.model.user import User
-
-sys.path.insert(0, '../src')
 
 app = Flask(__name__)
 
