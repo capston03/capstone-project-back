@@ -1,7 +1,7 @@
 import pymysql
 
-from src.handler_db import HandlerDb
-from src.model.user import User
+from handler_db import HandlerDb
+from model.user import User
 from enum import Enum
 from enum import auto
 

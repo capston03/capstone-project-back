@@ -2,8 +2,6 @@
 #                      port=3306, user='dbadmin', passwd='rootroot22', db='db_capstone', charset='utf8mb4'
 import pymysql
 
-from src.model.user import User
-
 
 class HandlerDb:
     def __init__(self,
