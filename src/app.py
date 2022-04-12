@@ -40,49 +40,49 @@ def show_beacons():
 @app.route("/login", methods=["POST"])
 def login():
     if not request.is_json:
-        return str_to_json("NOT JSON")
+        return str_to_json("NOT_JSON")
     params: Dict[str, str] = request.get_json()
     gmail_id = params.get("gmail_id")
     is_account_existed = handler_user_db.is_account_existed(gmail_id)
     if not is_account_existed:
-        return str_to_json("USER ACCOUNT IS NOT EXISTED")
+        return str_to_json("USER_ACCOUNT_IS_NOT_EXISTED")
     is_user_active = handler_user_db.is_user_already_logged_in(gmail_id)
     can_login = is_account_existed and not is_user_active
     if can_login:
         handler_user_db.login(gmail_id)
-        return str_to_json("LOGIN SUCCESS")
+        return str_to_json("LOGIN_SUCCESS")
     else:
-        return str_to_json("USER IS ALREADY LOGGED IN")
+        return str_to_json("USER_IS_ALREADY_LOGGED_IN")
 
 
 @app.route("/logout", methods=["POST"])
 def logout():
     if not request.is_json:
-        return str_to_json("NOT JSON")
+        return str_to_json("NOT_JSON")
     params: Dict[str, str] = request.get_json()
     gmail_id = params.get("gmail_id")
     is_account_existed = handler_user_db.is_account_existed(gmail_id)
     if not is_account_existed:
-        return str_to_json("USER ACCOUNT IS NOT EXISTED")
+        return str_to_json("USER_ACCOUNT_IS_NOT_EXISTED")
     is_user_active = handler_user_db.is_user_already_logged_in(gmail_id)
     can_logout = is_account_existed and is_user_active
     if can_logout:
         handler_user_db.logout(gmail_id)
-        return str_to_json("LOGOUT SUCCESS")
+        return str_to_json("LOGOUT_SUCCESS")
     else:
-        return str_to_json("USER IS ALREADY LOGGED OUT")
+        return str_to_json("USER_IS_ALREADY_LOGGED_OUT")
 
 
 @app.route("/signup", methods=["POST"])
 def signup():
     if not request.is_json:
-        return str_to_json("NOT JSON")
+        return str_to_json("NOT_JSON")
     params: Dict[str, str] = request.get_json()
     if "nickname" not in params \
             or "gmail_id" not in params \
             or "birthday" not in params \
             or "identity" not in params:
-        return str_to_json("NOT VALID USER INFO")
+        return str_to_json("NOT_VALID_USER_INFO")
     user = User(params.get("nickname"),
                 params.get("gmail_id"),
                 params.get("birthday"),
@@ -90,25 +90,25 @@ def signup():
                 1)
     result = handler_user_db.signup(user)
     if result == HandlerUserDb.DbState.NICKNAME_ALREADY_EXISTED:
-        return str_to_json("NICKNAME IS ALREADY USED")
+        return str_to_json("NICKNAME_IS_ALREADY USED")
     elif result == HandlerUserDb.DbState.ACCOUNT_ALREADY_EXISTED:
-        return str_to_json("ACCOUNT IS ALREADY EXISTED")
+        return str_to_json("ACCOUNT_IS_ALREADY EXISTED")
     else:
-        return str_to_json("SIGNUP SUCCESS")
+        return str_to_json("SIGNUP_SUCCESS")
 
 
 @app.route("/check_nickname", methods=["POST"])
 def check_nickname_duplicate():
     if not request.is_json:
-        return str_to_json("NOT JSON")
+        return str_to_json("NOT_JSON")
     params: Dict[str, str] = request.get_json()
     if "nickname" not in params:
-        return str_to_json("NOT VALID USER INFO")
+        return str_to_json("NOT_VALID_USER_INFO")
     is_nickname_duplicate = handler_user_db.is_nickname_existed(params.get("nickname"))
     if is_nickname_duplicate:
         return str_to_json("EXISTED")
     else:
-        return str_to_json("NOT EXISTED")
+        return str_to_json("NOT_EXISTED")
 
 
 @app.route("/users")
