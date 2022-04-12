@@ -5,6 +5,7 @@ from typing import List, Dict
 from handler_db import HandlerDb
 from handler_user_db import HandlerUserDb
 from model.user import User
+import json
 
 app = Flask(__name__)
 
@@ -21,6 +22,10 @@ handler_db = HandlerDb(**db_info)
 handler_user_db = HandlerUserDb(handler_db)
 
 
+def str_to_json(value: str) -> str:
+    return json.dumps({"result": value})
+
+
 @app.route("/")
 def home():
     return "Hello, World"
@@ -35,49 +40,49 @@ def show_beacons():
 @app.route("/login", methods=["POST"])
 def login():
     if not request.is_json:
-        return "NOT JSON"
+        return str_to_json("NOT JSON")
     params: Dict[str, str] = request.get_json()
     gmail_id = params.get("gmail_id")
     is_account_existed = handler_user_db.is_account_existed(gmail_id)
     if not is_account_existed:
-        return "USER ACCOUNT IS NOT EXISTED"
+        return str_to_json("USER ACCOUNT IS NOT EXISTED")
     is_user_active = handler_user_db.is_user_already_logged_in(gmail_id)
     can_login = is_account_existed and not is_user_active
     if can_login:
         handler_user_db.login(gmail_id)
-        return "LOGIN SUCCESS"
+        return str_to_json("LOGIN SUCCESS")
     else:
-        return "USER IS ALREADY LOGGED IN"
+        return str_to_json("USER IS ALREADY LOGGED IN")
 
 
 @app.route("/logout", methods=["POST"])
 def logout():
     if not request.is_json:
-        return "NOT JSON"
+        return str_to_json("NOT JSON")
     params: Dict[str, str] = request.get_json()
     gmail_id = params.get("gmail_id")
     is_account_existed = handler_user_db.is_account_existed(gmail_id)
     if not is_account_existed:
-        return "USER ACCOUNT IS NOT EXISTED"
+        return str_to_json("USER ACCOUNT IS NOT EXISTED")
     is_user_active = handler_user_db.is_user_already_logged_in(gmail_id)
     can_logout = is_account_existed and is_user_active
     if can_logout:
         handler_user_db.logout(gmail_id)
-        return "LOGOUT SUCCESS"
+        return str_to_json("LOGOUT SUCCESS")
     else:
-        return "USER IS ALREADY LOGGED OUT"
+        return str_to_json("USER IS ALREADY LOGGED OUT")
 
 
 @app.route("/signup", methods=["POST"])
 def signup():
     if not request.is_json:
-        return "NOT JSON"
+        return str_to_json("NOT JSON")
     params: Dict[str, str] = request.get_json()
     if "nickname" not in params \
             or "gmail_id" not in params \
             or "birthday" not in params \
             or "identity" not in params:
-        return "NOT VALID USER INFO"
+        return str_to_json("NOT VALID USER INFO")
     user = User(params.get("nickname"),
                 params.get("gmail_id"),
                 params.get("birthday"),
@@ -85,37 +90,37 @@ def signup():
                 1)
     result = handler_user_db.signup(user)
     if result == HandlerUserDb.DbState.NICKNAME_ALREADY_EXISTED:
-        return "NICKNAME IS ALREADY USED"
+        return str_to_json("NICKNAME IS ALREADY USED")
     elif result == HandlerUserDb.DbState.ACCOUNT_ALREADY_EXISTED:
-        return "ACCOUNT IS ALREADY EXISTED"
+        return str_to_json("ACCOUNT IS ALREADY EXISTED")
     else:
-        return "SIGNUP SUCCESS"
+        return str_to_json("SIGNUP SUCCESS")
 
 
 @app.route("/check_nickname", methods=["POST"])
 def check_nickname_duplicate():
     if not request.is_json:
-        return "NOT JSON"
+        return str_to_json("NOT JSON")
     params: Dict[str, str] = request.get_json()
     if "nickname" not in params:
-        return "NOT VALID USER INFO"
+        return str_to_json("NOT VALID USER INFO")
     is_nickname_duplicate = handler_user_db.is_nickname_existed(params.get("nickname"))
     if is_nickname_duplicate:
-        return "EXISTED"
+        return str_to_json("EXISTED")
     else:
-        return "NOT EXISTED"
+        return str_to_json("NOT EXISTED")
 
 
 @app.route("/users")
 def show_all_user():
     list_user = handler_db.get_all("user")
-    return str(list_user)
+    return str_to_json(str(list_user))
 
 
 @app.route("/board")
 def boards():
     list_board = handler_db.get_all("board")
-    return str(list_board)
+    return str_to_json(str(list_board))
 
 
 if __name__ == "__main__":
