@@ -92,6 +92,20 @@ def signup():
         return "SIGNUP SUCCESS"
 
 
+@app.route("/check_nickname", methods=["POST"])
+def check_nickname_duplicate():
+    if not request.is_json:
+        return "NOT JSON"
+    params: Dict[str, str] = request.get_json()
+    if "nickname" not in params:
+        return "NOT VALID USER INFO"
+    is_nickname_duplicate = handler_user_db.is_nickname_existed(params.get("nickname"))
+    if is_nickname_duplicate:
+        return "EXISTED"
+    else:
+        return "NOT EXISTED"
+
+
 @app.route("/users")
 def show_all_user():
     list_user = handler_db.get_all("user")
