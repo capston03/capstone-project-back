@@ -7,6 +7,8 @@ from handler_user_db import HandlerUserDb
 from model.user import User
 import json
 
+from src.model.user_device import UserDevice
+
 app = Flask(__name__)
 
 db_info: Dict[str, any] = {
@@ -42,14 +44,18 @@ def login():
     if not request.is_json:
         return str_to_json("NOT_JSON")
     params: Dict[str, str] = request.get_json()
-    gmail_id = params.get("gmail_id")
+    gmail_id = params.get("user_gmail_id")
+    current_device = UserDevice(
+        params.get("android_id"),
+        params.get("device_model")
+    )
     is_account_existed = handler_user_db.is_account_existed(gmail_id)
     if not is_account_existed:
         return str_to_json("USER_ACCOUNT_IS_NOT_EXISTED")
     is_user_active = handler_user_db.is_user_already_logged_in(gmail_id)
     can_login = is_account_existed and not is_user_active
     if can_login:
-        handler_user_db.login(gmail_id)
+        handler_user_db.login(gmail_id, current_device)
         return str_to_json("LOGIN_SUCCESS")
     else:
         return str_to_json("USER_IS_ALREADY_LOGGED_IN")
@@ -60,7 +66,7 @@ def logout():
     if not request.is_json:
         return str_to_json("NOT_JSON")
     params: Dict[str, str] = request.get_json()
-    gmail_id = params.get("gmail_id")
+    gmail_id = params.get("user_gmail_id")
     is_account_existed = handler_user_db.is_account_existed(gmail_id)
     if not is_account_existed:
         return str_to_json("USER_ACCOUNT_IS_NOT_EXISTED")
