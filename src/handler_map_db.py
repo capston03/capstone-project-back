@@ -1,9 +1,9 @@
-from src.handler_db import HandlerDb
+from handler_db import HandlerDb
 from typing import Tuple, List
 
-from src.model.building import Building
-from src.model.gps_coordinate import GPSCoordinate
-from src.utilities_map import UtilitiesMap
+from model.building import Building
+from model.gps_coordinate import GPSCoordinate
+from utilities_map import UtilitiesMap
 
 
 class HandlerMapDb:

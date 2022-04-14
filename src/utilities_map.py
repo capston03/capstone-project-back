@@ -1,4 +1,4 @@
-from src.model.gps_coordinate import GPSCoordinate
+from model.gps_coordinate import GPSCoordinate
 from haversine import haversine, inverse_haversine, Direction
 from typing import Tuple
 

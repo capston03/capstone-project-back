@@ -9,8 +9,8 @@ import json
 from enum import Enum, auto
 
 from model.user_device import UserDevice
-from src.handler_map_db import HandlerMapDb
-from src.model.gps_coordinate import GPSCoordinate
+from handler_map_db import HandlerMapDb
+from model.gps_coordinate import GPSCoordinate
 
 app = Flask(__name__)
 

@@ -1,4 +1,4 @@
-from src.model.gps_coordinate import GPSCoordinate
+from gps_coordinate import GPSCoordinate
 
 
 class Building:
@@ -10,7 +10,7 @@ class Building:
     @property
     def id(self):
         return self.__id
-    
+
     @property
     def name(self):
         return self.__name
