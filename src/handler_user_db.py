@@ -46,7 +46,7 @@ class HandlerUserDb:
                 return False
 
     # Check whether the user is already logged in
-    def is_user_already_logged_in(self, gmail_id: str) -> bool:
+    def is_user_logged_in(self, gmail_id: str) -> bool:
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
