@@ -90,9 +90,9 @@ def signup():
                 1)
     result = handler_user_db.signup(user)
     if result == HandlerUserDb.DbState.NICKNAME_ALREADY_EXISTED:
-        return str_to_json("NICKNAME_IS_ALREADY USED")
+        return str_to_json("NICKNAME_IS_ALREADY_USED")
     elif result == HandlerUserDb.DbState.ACCOUNT_ALREADY_EXISTED:
-        return str_to_json("ACCOUNT_IS_ALREADY EXISTED")
+        return str_to_json("ACCOUNT_IS_ALREADY_EXISTED")
     else:
         return str_to_json("SIGNUP_SUCCESS")
 
