@@ -7,7 +7,7 @@ from handler_user_db import HandlerUserDb
 from model.user import User
 import json
 
-from src.model.user_device import UserDevice
+from model.user_device import UserDevice
 
 app = Flask(__name__)
 

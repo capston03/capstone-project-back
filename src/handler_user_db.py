@@ -7,7 +7,7 @@ from enum import auto
 from typing import Dict, List, Final, Union
 import datetime
 
-from src.model.user_device import UserDevice
+from model.user_device import UserDevice
 
 
 class HandlerUserDb:
