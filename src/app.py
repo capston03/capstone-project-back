@@ -1,5 +1,3 @@
-import sys
-
 from flask import Flask, render_template, request
 from typing import List, Dict
 from handler_db import HandlerDb

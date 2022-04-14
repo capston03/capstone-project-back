@@ -1,4 +1,4 @@
-from gps_coordinate import GPSCoordinate
+from src.model.gps_coordinate import GPSCoordinate
 
 
 class Building:
