@@ -57,56 +57,60 @@ def does_params_have_keys(params: Dict[str, str], keys: List[str]):
         return False
 
 
+def str_to_json(value: str):
+    return json.dumps({"result": value})
+
+
 @app.route("/")
 def home():
-    return "Hello, World"
+    return str_to_json("Hello, World")
 
 
 @app.route("/login", methods=["POST"])
 def login():
     if not request.is_json:
-        return ResponseAboutUser.NOT_JSON.name
+        return str_to_json(ResponseAboutUser.NOT_JSON.name)
     params: Dict[str, str] = request.get_json()
     if not does_params_have_keys(params, ["user_gmail_id", "android_id", "device_model"]):
-        return ResponseAboutUser.INVALID_INPUT.name
+        return str_to_json(ResponseAboutUser.INVALID_INPUT.name)
     gmail_id = params.get("user_gmail_id")
     current_device = UserDevice(
         params.get("android_id"),
         params.get("device_model")
     )
     if not handler_user_db.is_account_existed(gmail_id):
-        return ResponseAboutUser.ACCOUNT_NOT_EXISTED.name
+        return str_to_json(ResponseAboutUser.ACCOUNT_NOT_EXISTED.name)
     if not handler_user_db.is_user_logged_in(gmail_id):
         handler_user_db.login(gmail_id, current_device)
-        return ResponseAboutUser.LOGIN_SUCCESS.name
+        return str_to_json(ResponseAboutUser.LOGIN_SUCCESS.name)
     else:
-        return ResponseAboutUser.ALREADY_LOGGED_IN.name
+        return str_to_json(ResponseAboutUser.ALREADY_LOGGED_IN.name)
 
 
 @app.route("/logout", methods=["POST"])
 def logout():
     if not request.is_json:
-        return ResponseAboutUser.NOT_JSON.name
+        return str_to_json(ResponseAboutUser.NOT_JSON.name)
     params: Dict[str, str] = request.get_json()
     if not does_params_have_keys(params, ["gmail_id"]):
-        return ResponseAboutUser.INVALID_INPUT.name
+        return str_to_json(ResponseAboutUser.INVALID_INPUT.name)
     gmail_id = params.get("gmail_id")
     if not handler_user_db.is_account_existed(gmail_id):
-        return ResponseAboutUser.ACCOUNT_NOT_EXISTED.name
+        return str_to_json(ResponseAboutUser.ACCOUNT_NOT_EXISTED.name)
     if handler_user_db.is_user_logged_in(gmail_id):
         handler_user_db.logout(gmail_id)
-        return ResponseAboutUser.LOGOUT_SUCCESS.name
+        return str_to_json(ResponseAboutUser.LOGOUT_SUCCESS.name)
     else:
-        return ResponseAboutUser.ALREADY_LOGGED_OUT.name
+        return str_to_json(ResponseAboutUser.ALREADY_LOGGED_OUT.name)
 
 
 @app.route("/signup", methods=["POST"])
 def signup():
     if not request.is_json:
-        return ResponseAboutUser.NOT_JSON.name
+        return str_to_json(ResponseAboutUser.NOT_JSON.name)
     params: Dict[str, str] = request.get_json()
     if not does_params_have_keys(params, ["nickname", "gmail_id", "birthday", "identity"]):
-        return ResponseAboutUser.INVALID_INPUT.name
+        return str_to_json(ResponseAboutUser.INVALID_INPUT.name)
     user = User(params.get("nickname"),
                 params.get("gmail_id"),
                 params.get("birthday"),
@@ -114,35 +118,35 @@ def signup():
                 1)
     result = handler_user_db.signup(user)
     if result == HandlerUserDb.AccountDbState.NICKNAME_ALREADY_EXISTED:
-        return ResponseAboutUser.NICKNAME_ALREADY_USED.name
+        return str_to_json(ResponseAboutUser.NICKNAME_ALREADY_USED.name)
     elif result == HandlerUserDb.AccountDbState.GMAIL_ID_ALREADY_EXISTED:
-        return ResponseAboutUser.GMAIL_ID_ALREADY_EXISTED.name
+        return str_to_json(ResponseAboutUser.GMAIL_ID_ALREADY_EXISTED.name)
     else:
-        return ResponseAboutUser.SIGNUP_SUCCESS.name
+        return str_to_json(ResponseAboutUser.SIGNUP_SUCCESS.name)
 
 
 @app.route("/check_nickname", methods=["POST"])
 def check_nickname_duplicate():
     if not request.is_json:
-        return ResponseAboutUser.NOT_JSON.name
+        return str_to_json(ResponseAboutUser.NOT_JSON.name)
     params: Dict[str, str] = request.get_json()
     if not does_params_have_keys(params, ["nickname"]):
-        return ResponseAboutUser.INVALID_INPUT.name
+        return str_to_json(ResponseAboutUser.INVALID_INPUT.name)
     if handler_user_db.is_nickname_existed(params.get("nickname")):
-        return ResponseAboutUser.NICKNAME_ALREADY_USED.name
+        return str_to_json(ResponseAboutUser.NICKNAME_ALREADY_USED.name)
     else:
-        return ResponseAboutUser.NICKNAME_VALID.name
+        return str_to_json(ResponseAboutUser.NICKNAME_VALID.name)
 
 
 @app.route("/nearby_building", methods=["POST"])
 def nearby_building():
     if not request.is_json:
-        return ResponseAboutBuilding.NOT_JSON.name
+        return str_to_json(ResponseAboutBuilding.NOT_JSON.name)
     params: Dict[str, str] = request.get_json()
     if not does_params_have_keys(params, ["latitude",
                                           "longitude",
                                           "range_radius"]):
-        return ResponseAboutBuilding.INVALID_INPUT.name
+        return str_to_json(ResponseAboutBuilding.INVALID_INPUT.name)
     list_nearby_building = handler_map_db.get_list_nearby_building(
         GPSCoordinate(
             float(params.get("latitude")),
