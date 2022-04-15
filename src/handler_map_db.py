@@ -1,5 +1,5 @@
 from handler_db import HandlerDb
-from typing import Tuple, List
+from typing import Tuple, List, Final
 
 from model.building import Building
 from model.gps_coordinate import GPSCoordinate
@@ -13,12 +13,13 @@ class HandlerMapDb:
     def __connect_db(self):
         return self.__handler_db.connect_db()
 
+    RANGE_RADIUS: Final[int] = 5
+
     # 사용자의 지도 화면 안에 있는 건물들의 리스트를 반환
     def get_list_nearby_building(self,
-                                 user_location: GPSCoordinate,
-                                 range_radius: float) -> List[Building]:
-        latitude_range = UtilitiesMap.get_latitude_range(user_location, range_radius)
-        longitude_range = UtilitiesMap.get_longitude_range(user_location, range_radius)
+                                 user_location: GPSCoordinate) -> List[Building]:
+        latitude_range = UtilitiesMap.get_latitude_range(user_location, self.RANGE_RADIUS)
+        longitude_range = UtilitiesMap.get_longitude_range(user_location, self.RANGE_RADIUS)
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:

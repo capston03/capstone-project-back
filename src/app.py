@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
 from typing import List, Dict
+
+from handler_beacon_db import HandlerBeaconDb
 from handler_db import HandlerDb
 from handler_user_db import HandlerUserDb
+from model.beacon import Beacon
 from model.user import User
 import json
 from enum import Enum, auto
@@ -24,6 +27,7 @@ db_info: Dict[str, any] = {
 handler_db = HandlerDb(**db_info)
 handler_user_db = HandlerUserDb(handler_db)
 handler_map_db = HandlerMapDb(handler_db)
+handler_beacon_db = HandlerBeaconDb(handler_db)
 
 
 class Response(Enum):
@@ -48,6 +52,12 @@ class ResponseAboutUser(Enum):
 class ResponseAboutBuilding(Enum):
     NOT_JSON = auto()
     INVALID_INPUT = auto()
+
+
+class ResponseAboutBeacon(Enum):
+    NOT_JSON = auto()
+    INVALID_INPUT = auto()
+    NOT_AUTHORIZED = auto()
 
 
 def does_params_have_keys(params: Dict[str, str], keys: List[str]):
@@ -144,16 +154,13 @@ def nearby_building():
         return str_to_json(ResponseAboutBuilding.NOT_JSON.name)
     params: Dict[str, str] = request.get_json()
     if not does_params_have_keys(params, ["latitude",
-                                          "longitude",
-                                          "range_radius"]):
+                                          "longitude"]):
         return str_to_json(ResponseAboutBuilding.INVALID_INPUT.name)
     list_nearby_building = handler_map_db.get_list_nearby_building(
         GPSCoordinate(
             float(params.get("latitude")),
-            float(params.get("longitude"))),
-        float(params.get("range_radius"))
+            float(params.get("longitude")))
     )
-    print(list_nearby_building[0].name)
 
     result = json.dumps({
         index: {
@@ -163,6 +170,29 @@ def nearby_building():
             "longitude": building.location.coordinate[1]
         } for index, building in enumerate(list_nearby_building)}, ensure_ascii=False)
     return result
+
+
+@app.route("/get_all_nearby_authorized_beacons", methods=["POST"])
+def get_all_nearby_authorized_beacons():
+    if not request.is_json:
+        return str_to_json(ResponseAboutBeacon.NOT_JSON.name)
+    params: Dict[str, str] = request.get_json()
+    list_beacon = [params[str(index)] for index in range(len(params))]
+    list_beacon = [beacon.get("mac_addr")
+                   for beacon in list_beacon]
+    try:
+        building_id = handler_beacon_db.get_building_id(list_beacon)
+        list_beacon_in_building = handler_beacon_db.get_all_beacon_in_building(building_id)
+        result = json.dumps({
+            index: {
+                "mac_addr": beacon.mac_addr,
+                "building_id": beacon.building_id,
+                "detail_location": beacon.detail_location,
+                "popular_user_gmail_id": beacon.popular_user_gmail_id
+            } for index, beacon in enumerate(list_beacon_in_building)}, ensure_ascii=False)
+        return result
+    except Exception as e:
+        return str_to_json(ResponseAboutBeacon.NOT_AUTHORIZED.name)
 
 
 if __name__ == "__main__":
