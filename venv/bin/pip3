@@ -1,4 +1,4 @@
-#!/Users/joseongchan/capstone-project-back/venv/bin/python
+#!/Users/joseongchan/capstone-project-back/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

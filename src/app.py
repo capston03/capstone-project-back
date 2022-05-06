@@ -13,6 +13,13 @@ from model.user_device import UserDevice
 from handler_map_db import HandlerMapDb
 from model.gps_coordinate import GPSCoordinate
 
+from flask import Flask, request
+
+from s3_connect import s3_connection, s3_put_object
+from s3_config import AWS_S3_BUCKET_NAME, AWS_S3_BUCKET_REGION
+
+s3 = s3_connection()
+
 app = Flask(__name__)
 
 db_info: Dict[str, any] = {
@@ -193,6 +200,18 @@ def get_all_nearby_authorized_beacons():
         return result
     except Exception as e:
         return str_to_json(ResponseAboutBeacon.NOT_AUTHORIZED.name)
+
+
+@app.route('/fileUpload', methods=['POST'])
+def upload():
+    f = request.files['file']
+    f.save("./temp")
+
+    ret = s3_put_object(s3, AWS_S3_BUCKET_NAME, "./temp", "ar_image/temp")
+    if ret:
+        return "파일 저장 성공"
+    else:
+        return "파일 저장 실패"
 
 
 if __name__ == "__main__":
