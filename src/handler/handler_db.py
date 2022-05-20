@@ -2,10 +2,11 @@
 #                      port=3306, user='dbadmin', passwd='rootroot22', db='db_capstone', charset='utf8mb4'
 from typing import Dict, List
 import pymysql
-from typing import Dict
+
+from config.DB_config import DB_CONFIG
 
 
-class HandlerDb:
+class HandlerDB:
     def __init__(self,
                  host: str,
                  port: int,
@@ -39,3 +40,6 @@ class HandlerDb:
             except Exception as e:
                 print(f"error : {e}")
                 return list()
+
+
+handler_db = HandlerDB(**DB_CONFIG)

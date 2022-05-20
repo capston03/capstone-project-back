@@ -1,17 +1,17 @@
-from handler_db import HandlerDb
 from typing import Tuple, List, Final
 
 from model.building import Building
 from model.gps_coordinate import GPSCoordinate
 from utilities_map import UtilitiesMap
+from .handler_db import handler_db as db_handler, HandlerDB
 
 
-class HandlerMapDb:
-    def __init__(self, handler_db: HandlerDb):
-        self.__handler_db = handler_db
+class MapDBHandler:
+    def __init__(self, db_handler: HandlerDB):
+        self.db_handler = db_handler
 
     def __connect_db(self):
-        return self.__handler_db.connect_db()
+        return self.db_handler.connect_db()
 
     RANGE_RADIUS: Final[int] = 5
 
@@ -37,3 +37,6 @@ class HandlerMapDb:
                     return list_building
             except Exception as e:
                 raise
+
+
+handler = MapDBHandler(db_handler)

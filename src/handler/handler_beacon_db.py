@@ -1,13 +1,13 @@
 from enum import Enum, auto
 
-from handler_db import HandlerDb
 from model.beacon import Beacon
 from typing import List
+from .handler_db import handler_db as db_handler, HandlerDB
 
 
-class HandlerBeaconDb:
+class BeaconDBHandler:
 
-    def __init__(self, handler_db: HandlerDb):
+    def __init__(self, handler_db: HandlerDB):
         self.__handler_db = handler_db
 
     def __connect_db(self):
@@ -47,3 +47,6 @@ class HandlerBeaconDb:
                     return list_beacon
             except Exception as e:
                 raise
+
+
+handler = BeaconDBHandler(db_handler)
