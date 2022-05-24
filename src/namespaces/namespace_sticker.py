@@ -35,21 +35,25 @@ def work(sticker: Sticker, start_x: float, start_y: float, width: float, height:
     remover.run(start_x, start_y, width, height)
 
 
-@namespace_sticker.route('/upload_orig')
+@namespace_sticker.route('/upload')
 class UploadOrig(Resource):
     def post(self):
-        f = request.files['file']
+        # Info
+        image = request.files["image"]
         uploader_gmail_id = request.form['uploader_gmail_id']
+        rectangle = request.form.getlist("rectangle")
         beacon_mac = request.form['beacon_mac']
         eventid = datetime.now().strftime('%Y%m-%d%H-%M%S-') + str(uuid4())
-        ext = f.filename.split('.')[-1]
+
+        # Upload the image file
+        ext = image.filename.split('.')[-1]
         filename = uploader_gmail_id + eventid + '.' + ext
         local_path = f'./images/{filename}'
         remote_path = f'sticker/{filename}'
         sticker = Sticker(uploader_gmail_id + eventid, filename, '', uploader_gmail_id,
                           datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                          beacon_mac)
-        f.save(local_path)
+                          beacon_mac, " ".join(rectangle))
+        image.save(local_path)
         rc = s3_handler.upload(local_path, remote_path)
         if rc:
             state = handler_sticker_db.write_info(sticker)

@@ -1,8 +1,8 @@
-from typing import Tuple, List, Final
+from typing import List, Final
 
 from model.building import Building
 from model.gps_coordinate import GPSCoordinate
-from utilities_map import UtilitiesMap
+from utility.utilities_map import UtilitiesMap
 from .handler_db import handler_db as db_handler, HandlerDB
 
 

@@ -1,10 +1,7 @@
 from enum import Enum, auto
-from typing import Tuple, List, Final
+from typing import Final
 
-from model.building import Building
-from model.gps_coordinate import GPSCoordinate
 from model.sticker import Sticker
-from utilities_map import UtilitiesMap
 from .handler_db import handler_db as db_handler, HandlerDB
 
 
@@ -31,12 +28,13 @@ class HandlerStickerDB:
                 with db.cursor() as cursor:
                     sql = f"INSERT INTO sticker (id, orig_img_path, " \
                           f"sticker_path, uploader_gmail_id, " \
-                          f"upload_time) " \
+                          f"upload_time, foreground_rect) " \
                           f"VALUES('{sticker.id}', " \
                           f"'{sticker.orig_img_path}', " \
                           f"'{sticker.sticker_path}', " \
                           f"'{sticker.uploader_gmail_id}', " \
-                          f"'{sticker.upload_time}')"
+                          f"'{sticker.upload_time}', " \
+                          f"'{sticker.foreground_rect}')"
                     cursor.execute(sql)
                     db.commit()
                     return HandlerStickerDB.State.OK

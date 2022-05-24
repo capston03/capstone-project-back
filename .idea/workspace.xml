@@ -2,9 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
+      <change afterPath="$PROJECT_DIR$/src/grabcut.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image_processing/png2stl.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app_grabcut.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_grabcut.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/image7_output.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/image7_output.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aerial_image_antialiased.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/aerial_image_antialiased.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aerial_image_contour.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aerial_image_mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aerial_image_morph.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aerial_image_thresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_backup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_grabcut.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprints/blueprints.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprints/blueprints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conv_2d_to_3d.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler_map_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_map_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler_sticker_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_sticker_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image_processing/remove_bg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/image0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/image1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/image2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/image3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/image4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/image5.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/image6.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/pixel_art_example_output.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/wordnumperiod202205-1303-2638-0c231421-5539-4660-9f4a-ff281da9941f._out.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/wordnumperiod202205-1303-2638-0c231421-5539-4660-9f4a-ff281da9941f._resized.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/wordnumperiod202205-1303-2638-0c231421-5539-4660-9f4a-ff281da9941f.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/sticker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pixel_art_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/pixelizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stl_ex.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface.stl" beforeDir="false" afterPath="$PROJECT_DIR$/src/stl/surface.stl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surface1.stl" beforeDir="false" afterPath="$PROJECT_DIR$/src/stl/surface1.stl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilities_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/utilities_map.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,10 +77,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/handler/handler_db.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/app.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/utilities_map.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/temp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/utility/utilities_map.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/app_opencv.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/app_backup.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/handler/handler_user_db.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/model/user.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -69,25 +98,26 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/gltf" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/gltf" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/stl" />
+      <recent name="$PROJECT_DIR$/src/utility" />
+      <recent name="$PROJECT_DIR$/src/image_processing" />
       <recent name="$PROJECT_DIR$/src/handler" />
       <recent name="$PROJECT_DIR$/src/config" />
-      <recent name="$PROJECT_DIR$/src/namespace" />
-      <recent name="$PROJECT_DIR$/src/s3" />
-      <recent name="$PROJECT_DIR$/src/utility" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app_grabcut">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.png2stl">
+    <configuration name="grabcut" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -100,7 +130,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/grabcut.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -109,7 +139,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app_grabcut" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="pixelizer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -122,7 +152,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app_grabcut.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/image_processing/pixelizer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -131,7 +161,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app_opencv" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="png2gltf" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -144,7 +174,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app_opencv.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/png2gltf.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,7 +183,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="conv_2d_to_3d" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="png2stl" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -166,7 +196,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/conv_2d_to_3d.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/image_processing/png2stl.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -175,7 +205,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pixel_art_generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="stl2glb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -188,7 +218,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/pixel_art_generator.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/image_processing/stl2glb.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -199,11 +229,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.app_grabcut" />
-        <item itemvalue="Python.conv_2d_to_3d" />
-        <item itemvalue="Python.pixel_art_generator" />
-        <item itemvalue="Python.app" />
-        <item itemvalue="Python.app_opencv" />
+        <item itemvalue="Python.png2stl" />
+        <item itemvalue="Python.pixelizer" />
+        <item itemvalue="Python.png2gltf" />
+        <item itemvalue="Python.stl2glb" />
       </list>
     </recent_temporary>
   </component>
@@ -241,7 +270,9 @@
       <workItem from="1652262929241" duration="3397000" />
       <workItem from="1652355349701" duration="13008000" />
       <workItem from="1652369417111" duration="14452000" />
-      <workItem from="1653020190056" duration="12526000" />
+      <workItem from="1653020190056" duration="12623000" />
+      <workItem from="1653296550704" duration="13339000" />
+      <workItem from="1653384958025" duration="6015000" />
     </task>
     <servers />
   </component>
@@ -269,13 +300,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/namespaces/namespace_sticker.py</url>
-          <line>40</line>
+          <line>41</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/app_grabcut.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -288,11 +314,15 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/capstone_project_back$pixel_art_generator.coverage" NAME="pixel_art_generator Coverage Results" MODIFIED="1653021275574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/capstone_project_back$conv_2d_to_3d.coverage" NAME="conv_2d_to_3d Coverage Results" MODIFIED="1653028812452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$pixel_art_generator.coverage" NAME="pixel_art_generator Coverage Results" MODIFIED="1653301173915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$conv_2d_to_3d.coverage" NAME="conv_2d_to_3d Coverage Results" MODIFIED="1653301213123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$app_opencv.coverage" NAME="app_opencv Coverage Results" MODIFIED="1651829131846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/capstone_project_back$app_grabcut.coverage" NAME="app_grabcut Coverage Results" MODIFIED="1653040761418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$app_grabcut.coverage" NAME="app_grabcut Coverage Results" MODIFIED="1653300895442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$app_vtk.coverage" NAME="stl2glb Coverage Results" MODIFIED="1653309844162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$app.coverage" NAME="app Coverage Results" MODIFIED="1652379767046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$png2stl.coverage" NAME="png2stl Coverage Results" MODIFIED="1653395183639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$s3_connect_test.coverage" NAME="s3_connect_test Coverage Results" MODIFIED="1651211222042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$png2gltf.coverage" NAME="png2gltf Coverage Results" MODIFIED="1653385788076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$pixelizer.coverage" NAME="pixelizer Coverage Results" MODIFIED="1653388496320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
