@@ -79,4 +79,4 @@ def png2stl(src_im_path: str, out_stl_path: str):
     surface.save(out_stl_path)
 
 
-png2stl("images/aerial_image_antialiased.png", "stl/cup.stl")
+png2stl("images/grabcut_ex.png", "stl/cup.stl")

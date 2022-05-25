@@ -100,6 +100,6 @@ def grabcut(src_path: str, out_path: str,
     rm_bg_result = ImageUtility.rm_black_bg(ImageUtility.conv_ndarray_to_cv2_image(grabcut_result))
     cv2.imwrite(out_path, cv2.cvtColor(rm_bg_result, cv2.COLOR_BGR2RGB))
 
-# input_im_path = "images/image7.jpeg"
-# output_im_path = "images/image7_output.jpeg"
+# input_im_path = "images/input_ex.jpeg"
+# output_im_path = "images/output_ex.jpeg"
 # rm_bg_im = grabcut(resized_im, 47, 78, 323, 246)

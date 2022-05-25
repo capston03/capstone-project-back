@@ -108,7 +108,7 @@ class PNG2GLTF:
         self.__init_triangles()
         self.__init_color_map()
 
-        texture = Image.open("../images/aerial_image_antialiased.png").convert("RGB")
+        texture = Image.open("../images/grabcut_ex.png").convert("RGB")
         texture.thumbnail(self.__max_size)
         texture_mtr = np.array(texture)
         self.__init_color_map(texture_mtr)

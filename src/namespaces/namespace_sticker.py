@@ -14,8 +14,8 @@ from multiprocessing import Process, Queue
 
 namespace_sticker = Namespace('sticker', 'Api for sticker')
 
-origin_img = "images/image7.jpeg"
-output_img = "images/image7_output.jpeg"
+origin_img = "images/input_ex.jpeg"
+output_img = "images/output_ex.jpeg"
 
 (x, y, w, h) = (47, 78, 323, 246)
 start = (x, y)
