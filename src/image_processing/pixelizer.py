@@ -1,6 +1,7 @@
 from PIL import Image
 
 
+# Do not use. (Deprecated)
 def pixelize(src_im_path: str, out_im_path: str, resize_ratio: float):
     img = Image.open(src_im_path)
     orig_size = (img.width, img.height)
@@ -10,5 +11,4 @@ def pixelize(src_im_path: str, out_im_path: str, resize_ratio: float):
     pixeled_img = small_img.resize(orig_size, Image.NEAREST)
     pixeled_img.save(out_im_path)
 
-
-pixelize("images/aerial_image_antialiased.png", "images/pixelized_output.png", 0.3)
+# pixelize("images/aerial_image_antialiased.png", "images/pixelized_output.png", 0.3)

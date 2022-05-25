@@ -12,6 +12,8 @@ import numpy as np
 #
 # z coordinate: 0
 
+# Example for open3d
+# Do not use! (Deprecated)
 mesh = open3d.geometry.TriangleMesh()
 np_vertices = np.array([[-1, 2, 0],
                         [1, 2, 0],

@@ -64,9 +64,9 @@ class Signup(Resource):
                     params.get("identity"),
                     1)
         result = user_db_handler.signup(user)
-        if result == UserDBHandler.AccountDbState.NICKNAME_ALREADY_EXISTED:
+        if result == UserDBHandler.Result.NICKNAME_ALREADY_EXISTED:
             return to_json('nickname_already_used')
-        elif result == UserDBHandler.AccountDbState.GMAIL_ID_ALREADY_EXISTED:
+        elif result == UserDBHandler.Result.GMAIL_ID_ALREADY_EXISTED:
             return to_json('gmail_id_already_used')
         else:
             return to_json('success')

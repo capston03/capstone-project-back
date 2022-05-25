@@ -12,7 +12,7 @@ class User:
             return f"{self.year}-{self.month}-{self.day}"
 
     @staticmethod
-    def _parse_time(birthday: str) -> Time:
+    def __parse_time(birthday: str) -> Time:
         p = "^(\d{4})-(\d{2})-(\d{2})$"
         capture_result = re.search(p, birthday)
         group = capture_result.groups()
@@ -28,6 +28,6 @@ class User:
                  is_active: int):
         self.nickname = nickname
         self.gmail_id = gmail_id
-        self.birthday = self._parse_time(birthday)
+        self.birthday = self.__parse_time(birthday)
         self.identity = identity
         self.is_active = is_active

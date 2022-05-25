@@ -4,6 +4,7 @@ import numpy as np
 from stl import mesh
 
 
+# Do not use. (Deprecated)
 def png2stl(src_im_path: str, out_stl_path: str):
     grey_im = Image.open(src_im_path).convert("L")
     max_size = (500, 500)

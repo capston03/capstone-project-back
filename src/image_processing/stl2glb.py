@@ -5,6 +5,7 @@ from math import sqrt
 import vtk
 
 
+# Do not use (Deprecated)
 def normalize(vector):
     norm = 0
     for i in range(0, len(vector)):

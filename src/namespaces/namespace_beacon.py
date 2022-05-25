@@ -27,5 +27,5 @@ class Nearby(Resource):
                 "detail_location": beacon.detail_location,
                 "popular_user_gmail_id": beacon.popular_user_gmail_id
             } for index, beacon in enumerate(list_beacon_in_building)})
-        except Exception as e:
+        except Exception:
             return to_json('not_authorized')
