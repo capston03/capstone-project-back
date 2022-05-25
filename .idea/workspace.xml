@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprints/blueprints.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprints/blueprints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gltf/cub.glb" beforeDir="false" afterPath="$PROJECT_DIR$/src/gltf/cub.glb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gltf/cub.gltf" beforeDir="false" afterPath="$PROJECT_DIR$/src/gltf/cub.gltf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gltf/cub.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gltf/cube.gltf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gltf/result.gltf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler_beacon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_beacon_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/image_processing/open3d_mesh.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/open3d_mesh.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,13 +74,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/gltf" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/blueprints" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/blueprints" />
       <recent name="$PROJECT_DIR$/src/gltf" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -242,6 +251,7 @@
       <workItem from="1653020190056" duration="12623000" />
       <workItem from="1653296550704" duration="13339000" />
       <workItem from="1653384958025" duration="42520000" />
+      <workItem from="1653504512125" duration="4908000" />
     </task>
     <servers />
   </component>
@@ -264,23 +274,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/handler/handler_beacon_db.py</url>
-          <line>41</line>
+          <line>51</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/namespaces/namespace_sticker.py</url>
           <line>41</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/image_processing/open3d_mesh.py</url>
-          <line>75</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/image_processing/open3d_mesh.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -303,7 +303,7 @@
     <SUITE FILE_PATH="coverage/capstone_project_back$png2stl.coverage" NAME="png2stl Coverage Results" MODIFIED="1653398131451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$s3_connect_test.coverage" NAME="s3_connect_test Coverage Results" MODIFIED="1651211222042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$png2gltf.coverage" NAME="png2gltf Coverage Results" MODIFIED="1653385788076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/capstone_project_back$open3d_mesh.coverage" NAME="open3d_mesh Coverage Results" MODIFIED="1653503898555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$open3d_mesh.coverage" NAME="open3d_mesh Coverage Results" MODIFIED="1653508665820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
     <SUITE FILE_PATH="coverage/capstone_project_back$pixelizer.coverage" NAME="pixelizer Coverage Results" MODIFIED="1653388496320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

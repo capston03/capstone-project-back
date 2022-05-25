@@ -1,5 +1,3 @@
-# host='db-capstone.cbo8gwqsco77.ap-northeast-2.rds.amazonaws.com',
-#                      port=3306, user='dbadmin', passwd='rootroot22', db='db_capstone', charset='utf8mb4'
 from typing import Dict, List
 import pymysql
 
@@ -22,6 +20,10 @@ class HandlerDB:
         self.__charset = charset
 
     def connect_db(self):
+        '''
+        Connect the database (AWS RDS)
+        :return: DB connection
+        '''
         return pymysql.connect(host=self.__host,
                                port=self.__port,
                                user=self.__user,
@@ -30,6 +32,11 @@ class HandlerDB:
                                charset=self.__charset)
 
     def get_all(self, table_name: str) -> List[str]:
+        '''
+        Get all records in table.
+        :param table_name: Table name.
+        :return:
+        '''
         with self.connect_db() as db:
             try:
                 with db.cursor() as cursor:

@@ -19,7 +19,6 @@ api = Api(blueprint_building)
 api.add_namespace(namespace_building, '/')
 
 blueprint_image = Blueprint('image', __name__, url_prefix='/image')
-# api = Api(blueprint_image)
 
 blueprint_sticker = Blueprint('sticker', __name__, url_prefix='sticker')
 api = Api(blueprint_sticker)
