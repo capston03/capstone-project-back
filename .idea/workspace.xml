@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/src/image_processing/png2gltf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/grabcut.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/grabcut.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image_processing/open3d_mesh.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image_processing/pixelizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/pixelizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image_processing/png2stl.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/png2stl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image_processing/stl2glb.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/stl2glb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image_processing/triangle_mesh.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/open3d_ex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/beacon.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/beacon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_account.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_account.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_beacon.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_beacon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/png2gltf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprints/blueprints.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprints/blueprints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +47,6 @@
     <setting file="file://$PROJECT_DIR$/src/handler/handler_db.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/app.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/utility/utilities_map.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/app_opencv.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/handler/handler_user_db.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/model/user.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -97,7 +85,29 @@
       <recent name="$PROJECT_DIR$/src/config" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.png2gltf">
+  <component name="RunManager" selected="Python.app">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="capstone-project-back" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="open3d_ex" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -210,11 +220,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.app" />
         <item itemvalue="Python.png2gltf" />
         <item itemvalue="Python.open3d_ex" />
         <item itemvalue="Python.png2stl" />
         <item itemvalue="Python.pixelizer" />
-        <item itemvalue="Python.png2gltf" />
       </list>
     </recent_temporary>
   </component>
@@ -255,7 +265,7 @@
       <workItem from="1653020190056" duration="12623000" />
       <workItem from="1653296550704" duration="13339000" />
       <workItem from="1653384958025" duration="42520000" />
-      <workItem from="1653504512125" duration="10012000" />
+      <workItem from="1653504512125" duration="11439000" />
     </task>
     <servers />
   </component>
@@ -283,7 +293,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/namespaces/namespace_sticker.py</url>
-          <line>41</line>
+          <line>35</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
