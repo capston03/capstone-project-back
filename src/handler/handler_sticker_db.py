@@ -2,27 +2,29 @@ from enum import Enum, auto
 from typing import Final
 
 from model.sticker import Sticker
-from .handler_db import handler_db as db_handler, HandlerDB
+from .handler_db import handler_db, HandlerDB
 
 
+# Handler for handling db about sticker image
 class HandlerStickerDB:
-    class State(Enum):
-        UNKNOWN_ERROR = auto()
-        OK = auto()
-        FULL = auto()
-        NEED_TO_ADD = auto()
-        EXISTED = auto()
 
-    def __init__(self, db_handler: HandlerDB):
-        self.db_handler = db_handler
+    def __init__(self, handler_db: HandlerDB):
+        self.handler_db = handler_db
 
     def __connect_db(self):
-        return self.db_handler.connect_db()
-
-    RANGE_RADIUS: Final[int] = 5
+        """
+        Connect to the database.
+        :return: Connection
+        """
+        return self.handler_db.connect_db()
 
     # Write sticker info into DB
-    def write_info(self, sticker: Sticker):
+    def write_info(self, sticker: Sticker) -> bool:
+        """
+        Write information about sticker image into the database.
+        :param sticker: Information about sticker image
+        :return: Connection
+        """
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -37,10 +39,10 @@ class HandlerStickerDB:
                           f"'{sticker.foreground_rect}')"
                     cursor.execute(sql)
                     db.commit()
-                    return HandlerStickerDB.State.OK
+                    return True
             except Exception as e:
                 print(f"error : {e}")
-                return HandlerStickerDB.State.UNKNOWN_ERROR
+                return False
 
 
-handler_sticker_db = HandlerStickerDB(db_handler)
+handler_sticker_db = HandlerStickerDB(handler_db)

@@ -1,37 +1,42 @@
 from model.user import User
 from enum import Enum
 from enum import auto
-from typing import Dict, List, Final, Union
+from typing import List, Final
 import datetime
 
 from model.user_device import UserDevice
 from .handler_db import handler_db, HandlerDB
 
 
+# Handler for user DB
 class UserDBHandler:
     LIST_ANDROID_ID_LEN: Final[int] = 5
 
-    class UserDeviceDbState(Enum):
-        UNKNOWN_ERROR = auto()
+    class Result(Enum):
+        UNKNOWN_ERR = auto()
         OK = auto()
         FULL = auto()
         NEED_TO_ADD = auto()
         EXISTED = auto()
-
-    class AccountDbState(Enum):
-        UNKNOWN_ERROR = auto()
         GMAIL_ID_ALREADY_EXISTED = auto()
         NICKNAME_ALREADY_EXISTED = auto()
-        OK = auto()
 
     def __init__(self, handler_db: HandlerDB):
         self.__handler_db = handler_db
 
     def __connect_db(self):
+        """
+        Connect to the database (AWS RDS).
+        :return: Connection
+        """
         return self.__handler_db.connect_db()
 
-    # Check whether the user account is already existed
     def is_account_existed(self, gmail_id: str) -> bool:
+        """
+        Check whether the user account is already existed.
+        :param gmail_id: Gmail id
+        :return: Check result
+        """
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -43,8 +48,12 @@ class UserDBHandler:
                 print(f"error : {e}")
                 return False
 
-    # Check whether the user is already logged in
     def is_user_logged_in(self, gmail_id: str) -> bool:
+        """
+        Check whether the user is already logged in.
+        :param gmail_id: Gmail id
+        :return: Check result
+        """
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -56,19 +65,20 @@ class UserDBHandler:
                 print(f"error : {e}")
                 return False
 
-    # Login
     def login(self, gmail_id, current_device: UserDevice):
+        """
+        Login
+        :param gmail_id: User's gmail id
+        :param current_device: User's current device
+        :return: Whether the user can login
+        """
         result = self.__can_access_with_current_device(gmail_id, current_device)
-        if result == UserDBHandler.UserDeviceDbState.FULL:
-            print("Full")
+        if result == UserDBHandler.Result.FULL:
             self.__delete_last_device(gmail_id)
             self.__add_current_device(gmail_id, current_device)
-            print("Add device info")
-        elif result == UserDBHandler.UserDeviceDbState.NEED_TO_ADD:
-            print("Add device info")
+        elif result == UserDBHandler.Result.NEED_TO_ADD:
             self.__add_current_device(gmail_id, current_device)
-        elif result == UserDBHandler.UserDeviceDbState.EXISTED:
-            # print("Existed")
+        elif result == UserDBHandler.Result.EXISTED:
             self.__update_last_login_date(gmail_id, current_device)
         else:
             return False
@@ -84,8 +94,12 @@ class UserDBHandler:
                 print(f"error : {e}")
                 return False
 
-    # Logout
     def logout(self, gmail_id: str):
+        """
+        Logout
+        :param gmail_id: User's gmail id
+        :return: Whether the user can logout
+        """
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -97,8 +111,12 @@ class UserDBHandler:
                 print(f"error : {e}")
                 return False
 
-    # Check whether nickname is existed in the database
     def is_nickname_existed(self, nickname: str) -> bool:
+        """
+        Check whether the nickname is already used one.
+        :param nickname: Nickname
+        :return: Check result
+        """
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -110,11 +128,16 @@ class UserDBHandler:
                 print(f"error : {e}")
                 return False
 
-    def signup(self, user: User) -> AccountDbState:
+    def signup(self, user: User) -> Result:
+        """
+        Signup
+        :param user: Information about user
+        :return: Whether the user can signup (create the account)
+        """
         if self.is_nickname_existed(user.nickname):
-            return UserDBHandler.AccountDbState.NICKNAME_ALREADY_EXISTED
+            return UserDBHandler.Result.NICKNAME_ALREADY_EXISTED
         elif self.is_account_existed(user.gmail_id):
-            return UserDBHandler.AccountDbState.GMAIL_ID_ALREADY_EXISTED
+            return UserDBHandler.Result.GMAIL_ID_ALREADY_EXISTED
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -126,12 +149,17 @@ class UserDBHandler:
                           f"'{user.is_active}')"
                     cursor.execute(sql)
                     db.commit()
-                    return UserDBHandler.AccountDbState.OK
+                    return UserDBHandler.Result.OK
             except Exception as e:
                 print(f"error : {e}")
-                return UserDBHandler.AccountDbState.UNKNOWN_ERROR
+                return UserDBHandler.Result.UNKNOWN_ERR
 
     def __get_list_android_id(self, gmail_id) -> List[str]:
+        """
+        Get the list of user's device id.
+        :param gmail_id: User's gmail id
+        :return: List of user's device id
+        """
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -142,20 +170,32 @@ class UserDBHandler:
             except Exception:
                 raise
 
-    def __can_access_with_current_device(self, gmail_id: str, current_device: UserDevice) -> UserDeviceDbState:
+    def __can_access_with_current_device(self, gmail_id: str, current_device: UserDevice) -> Result:
+        """
+        Check that user can login with this device (current device)
+        :param gmail_id: User's gmail id
+        :param current_device: User's current device
+        :return: Check result
+        """
         try:
             list_android_id = self.__get_list_android_id(gmail_id)
         except Exception as e:
             print(f"error : {e}")
-            return UserDBHandler.UserDeviceDbState.UNKNOWN_ERROR
+            return UserDBHandler.Result.UNKNOWN_ERR
         if current_device.android_id in list_android_id:
-            return UserDBHandler.UserDeviceDbState.EXISTED
+            return UserDBHandler.Result.EXISTED
         elif len(list_android_id) == self.LIST_ANDROID_ID_LEN:
-            return UserDBHandler.UserDeviceDbState.FULL
+            return UserDBHandler.Result.FULL
         else:
-            return UserDBHandler.UserDeviceDbState.NEED_TO_ADD
+            return UserDBHandler.Result.NEED_TO_ADD
 
-    def __add_current_device(self, gmail_id: str, current_device: UserDevice) -> UserDeviceDbState:
+    def __add_current_device(self, gmail_id: str, current_device: UserDevice) -> Result:
+        """
+        Add this device information to the user's device list.
+        :param gmail_id: User's gmail id
+        :param current_device: Current device
+        :return: Whether It can be added
+        """
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -167,17 +207,22 @@ class UserDBHandler:
                           f"'{now}');"
                     cursor.execute(sql)
                     db.commit()
-                    return UserDBHandler.UserDeviceDbState.OK
+                    return UserDBHandler.Result.OK
             except Exception as e:
                 print(f"error : {e}")
-                return UserDBHandler.UserDeviceDbState.UNKNOWN_ERROR
+                return UserDBHandler.Result.UNKNOWN_ERR
 
-    def __delete_last_device(self, gmail_id: str) -> UserDeviceDbState:
+    def __delete_last_device(self, gmail_id: str) -> Result:
+        """
+        Delete the last connected device.
+        :param gmail_id: User's gmail id
+        :return: Operation result
+        """
         try:
             last_android_id = self.__get_list_android_id(gmail_id)[-1]
         except Exception as e:
             print(f"error : {e}")
-            return UserDBHandler.UserDeviceDbState.UNKNOWN_ERROR
+            return UserDBHandler.Result.UNKNOWN_ERR
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -185,12 +230,18 @@ class UserDBHandler:
                     sql = f"DELETE FROM user_device WHERE android_id = '{last_android_id}';"
                     cursor.execute(sql)
                     db.commit()
-                    return UserDBHandler.UserDeviceDbState.OK
+                    return UserDBHandler.Result.OK
             except Exception as e:
                 print(f"error : {e}")
-                return UserDBHandler.UserDeviceDbState.UNKNOWN_ERROR
+                return UserDBHandler.Result.UNKNOWN_ERR
 
-    def __update_last_login_date(self, gmail_id: str, current_device: UserDevice) -> UserDeviceDbState:
+    def __update_last_login_date(self, gmail_id: str, current_device: UserDevice) -> Result:
+        """
+        Update the last login date.
+        :param gmail_id: User's gmail id
+        :param current_device: Current device
+        :return: Operation result
+        """
         with self.__connect_db() as db:
             with db.cursor() as cursor:
                 try:
@@ -199,10 +250,10 @@ class UserDBHandler:
                           f"WHERE user_gmail_id = '{gmail_id}' AND android_id = '{current_device.android_id}'"
                     cursor.execute(sql)
                     db.commit()
-                    return UserDBHandler.UserDeviceDbState.OK
+                    return UserDBHandler.Result.OK
                 except Exception as e:
                     print(f"error : {e}")
-                    return UserDBHandler.UserDeviceDbState.UNKNOWN_ERROR
+                    return UserDBHandler.Result.UNKNOWN_ERR
 
 
 handler_user_db = UserDBHandler(handler_db)

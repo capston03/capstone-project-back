@@ -3,21 +3,30 @@ from typing import List, Final
 from model.building import Building
 from model.gps_coordinate import GPSCoordinate
 from utility.utilities_map import UtilitiesMap
-from .handler_db import handler_db as db_handler, HandlerDB
+from .handler_db import handler_db, HandlerDB
 
 
 class MapDBHandler:
-    def __init__(self, db_handler: HandlerDB):
-        self.db_handler = db_handler
+    def __init__(self, handler_db: HandlerDB):
+        self.handler_db = handler_db
 
     def __connect_db(self):
-        return self.db_handler.connect_db()
+        """
+        Connect to the database (AWS RDS)
+        :return: Connection
+        """
+        return self.handler_db.connect_db()
 
+    # Radius of range (Client gets all buildings that beacon is installed within a five-kilometer radius)
     RANGE_RADIUS: Final[int] = 5
 
-    # 사용자의 지도 화면 안에 있는 건물들의 리스트를 반환
     def get_list_nearby_building(self,
                                  user_location: GPSCoordinate) -> List[Building]:
+        """
+        Find all bulidings nearby.
+        :param user_location: User's location
+        :return: List of building
+        """
         latitude_range = UtilitiesMap.get_latitude_range(user_location, self.RANGE_RADIUS)
         longitude_range = UtilitiesMap.get_longitude_range(user_location, self.RANGE_RADIUS)
         with self.__connect_db() as db:
@@ -39,4 +48,4 @@ class MapDBHandler:
                 raise
 
 
-handler = MapDBHandler(db_handler)
+handler = MapDBHandler(handler_db)
