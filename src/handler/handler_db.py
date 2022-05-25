@@ -4,6 +4,7 @@ import pymysql
 from config.DB_config import DB_CONFIG
 
 
+# Handler used to handle the AWS RDS database.
 class HandlerDB:
     def __init__(self,
                  host: str,
