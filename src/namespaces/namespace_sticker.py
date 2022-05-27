@@ -1,9 +1,11 @@
 from multiprocessing import Process
-from typing import Dict
+from pathlib import Path
+from typing import Dict, Final, Tuple
 
 from flask import request
 from flask_restx import Namespace, Resource
 
+from image_processing.png2glb import PNG2GLB
 from image_processing.grabcut import grabcut
 from model.sticker import Sticker
 from utility.utilities import check_if_param_has_keys, to_json
@@ -23,10 +25,28 @@ start = (x, y)
 end = (x + w, y + h)
 rect = (x, y, w, h)
 
+PREFIX_PATH_LOCAL_ORIG: Final[str] = "./orig/"
+PREFIX_PATH_REMOTE_ORIG: Final[str] = "orig/"
+PREFIX_PATH_LOCAL_STICKER: Final[str] = "./sticker/"
+PREFIX_PATH_REMOTE_STICKER: Final[str] = "sticker/"
+PREFIX_PATH_LOCAL_GLTF: Final[str] = "./glb/"
+PREFIX_PATH_REMOTE_GLTF: Final[str] = "glb/"
 
-def work(local_orig_path: str, local_sticker_path: str,
-         start_x: float, start_y: float, width: float, height: float):
+
+def work(filename: str, max_height: int, max_size: Tuple[int, int], start_x: float, start_y: float, width: float,
+         height: float):
+    local_orig_path = PREFIX_PATH_LOCAL_ORIG + filename
+    local_sticker_path = PREFIX_PATH_LOCAL_STICKER + filename
+    remote_sticker_path = PREFIX_PATH_REMOTE_STICKER + filename
     grabcut(local_orig_path, local_sticker_path, start_x, start_y, width, height)
+    s3_handler.upload(local_sticker_path, remote_sticker_path)
+    print("Remove background Complete...")
+    gltf_filename = str(Path(filename).with_suffix(".glb"))
+    local_glb_path = PREFIX_PATH_LOCAL_GLTF + gltf_filename
+    remote_glb_path = PREFIX_PATH_REMOTE_GLTF + gltf_filename
+    PNG2GLB(local_sticker_path, local_glb_path, max_height, max_size).run()
+    s3_handler.upload(local_glb_path, remote_glb_path)
+    print("Build the gltf model Complete!")
 
 
 @namespace_sticker.route('/upload')
@@ -35,13 +55,13 @@ class Upload(Resource):
         # Info
         image = request.files["image"]
         uploader_gmail_id = request.form['uploader_gmail_id']
-        rectangle = request.form.getlist("rectangle")
+        rectangle = [int(e) for e in request.form.getlist("rectangle[]")]
         beacon_mac = request.form['beacon_mac']
         event_id = datetime.now().strftime('%Y%m-%d%H-%M%S-') + str(uuid4())
 
         # Upload the image file
         ext = image.filename.split('.')[-1]
-        filename = uploader_gmail_id + event_id + '.' + ext
+        filename = uploader_gmail_id + event_id + '.' + "png"
         local_orig_path = f'./orig/{filename}'
         local_sticker_path = f'./sticker/{filename}'
         remote_orig_path = f'orig/{filename}'
@@ -55,6 +75,6 @@ class Upload(Resource):
             return to_json("failure")
         if not handler_sticker_db.write_info(sticker):
             return to_json("failure")
-        p = Process(target=work, args=(local_orig_path, local_sticker_path, *rectangle))
+        p = Process(target=work, args=(filename, 30, (500, 500), *rectangle))
         p.start()
         return to_json("success")

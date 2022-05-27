@@ -20,7 +20,7 @@ api.add_namespace(namespace_building, '/')
 
 blueprint_image = Blueprint('image', __name__, url_prefix='/image')
 
-__blueprint_sticker = Blueprint('sticker', __name__, url_prefix='sticker')
+__blueprint_sticker = Blueprint('sticker', __name__, url_prefix='/sticker')
 blueprint_image.register_blueprint(__blueprint_sticker)
 api = Api(__blueprint_sticker)
-api.add_namespace(namespace_sticker, '/sticker')
+api.add_namespace(namespace_sticker, '/')
