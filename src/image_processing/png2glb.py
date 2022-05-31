@@ -97,10 +97,11 @@ class PNG2GLB:
         **mtr means matrix
         :return: None
         """
-        alpha_mtr = np.array(Image.open(self.__png_path).convert("RGBA"))[..., 3]
+        img = Image.open(self.__png_path)
+        img.thumbnail(self.__max_size)
+        alpha_mtr = np.array(img.convert("RGBA"))[..., 3]
         filter_mtr = np.where(alpha_mtr == 0, 0, 1)
-        grey_img = Image.open(self.__png_path).convert("L")
-        grey_img.thumbnail(self.__max_size)
+        grey_img = img.convert("L")
         grey_img_mtr = np.array(grey_img)
         # Black area != Transparent area
         grey_img_mtr = np.where(grey_img_mtr == 0, 2, grey_img_mtr)

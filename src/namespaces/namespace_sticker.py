@@ -60,11 +60,12 @@ class Upload(Resource):
         event_id = datetime.now().strftime('%Y%m-%d%H-%M%S-') + str(uuid4())
 
         # Upload the image file
-        filename = uploader_gmail_id + event_id + '.' + "png"
-        local_orig_path = f'{PREFIX_PATH_LOCAL_ORIG}{filename}'
-        remote_orig_path = f'{PREFIX_PATH_REMOTE_ORIG}{filename}'
-        remote_sticker_path = f'{PREFIX_PATH_REMOTE_STICKER}{filename}'
-        remote_glb_path = f"{PREFIX_PATH_REMOTE_GLTF}{filename}"
+        png_name = uploader_gmail_id + event_id + ".png"
+        glb_name = uploader_gmail_id + event_id + ".glb"
+        local_orig_path = f'{PREFIX_PATH_LOCAL_ORIG}{png_name}'
+        remote_orig_path = f'{PREFIX_PATH_REMOTE_ORIG}{png_name}'
+        remote_sticker_path = f'{PREFIX_PATH_REMOTE_STICKER}{png_name}'
+        remote_glb_path = f"{PREFIX_PATH_REMOTE_GLTF}{glb_name}"
         sticker = Sticker(uploader_gmail_id + event_id,
                           remote_orig_path, remote_sticker_path,
                           remote_glb_path, uploader_gmail_id,
@@ -76,6 +77,22 @@ class Upload(Resource):
             return to_json("upload_to_s3_failure")
         if not handler_sticker_db.write_info(sticker):
             return to_json("write_db_failure")
-        p = Process(target=work, args=(filename, 30, (500, 500), *rectangle))
+        p = Process(target=work, args=(png_name, 30, (500, 500), *rectangle))
         p.start()
         return to_json("success")
+
+
+@namespace_sticker.route("/download")
+class Download(Resource):
+    def post(self):
+        if not request.is_json:
+            return to_json('not_json')
+        params: Dict[str, str] = request.get_json()
+        if not check_if_param_has_keys(params, ["gmail_id", "beacon_mac"]):
+            return to_json('invalid_input')
+        my_stickers = handler_sticker_db.get_user_sticker(params.get("gmail_id"))
+        beacon_stickers = handler_sticker_db.get_sticker_nearby(params.get("beacon_mac"))
+        stickers = set(my_stickers).union(beacon_stickers)
+        return to_json({index: {"name": sticker[3],
+                                "url": s3_handler.generate_presigned_url(sticker[3])} for index, sticker in
+                        enumerate(stickers)})

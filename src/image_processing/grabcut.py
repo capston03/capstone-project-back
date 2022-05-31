@@ -81,7 +81,6 @@ def grabcut(src_path: str, out_path: str,
             x_ratio, y_ratio, w_ratio, h_ratio):
     im = Image.open(src_path)
     im = ImageUtility.resize(im, 0.5)
-    print(im.width, im.height)
     im_mtr = ImageUtility.conv_pilimage_to_ndarray(im)
     copy = im_mtr.copy()
 
