@@ -3,15 +3,38 @@
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprints/blueprints.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprints/blueprints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gltf/cub.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gltf/cub.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_s3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202205-2617-4507-1971ebc0-857b-4387-901c-932a41ebfd1d.gltf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202205-2617-4748-3533ff0f-4f59-4390-9feb-936f6cfbedaf.gltf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202205-2617-4910-bdb9717a-e879-4e52-b4e7-8ac140dbbde9.glb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202205-2617-4910-bdb9717a-e879-4e52-b4e7-8ac140dbbde9.gltf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler_sticker_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_sticker_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/image_processing/grabcut.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/grabcut.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image_processing/png2gltf.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/png2glb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/output_ex.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/output_ex.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/sticker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2607-4638-93df0d49-fbd0-44d2-828f-3f77e3ff8042.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2607-4700-f4d178da-9532-4959-947f-fe63b935a867.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2607-4742-81869455-209e-4027-a094-5a3fe9a7f6e4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2607-4929-5b1e14dc-a8db-450a-9a4c-9665143c48b0.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2607-5300-f6f346f4-5142-4105-a767-20d52b213b9d.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2607-5310-12b69649-6e4c-478b-a7cc-e73b8514f53d.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2607-5525-82e34d99-25c8-47ef-9aac-c2c5b3253ab0.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2611-2638-adb65a52-ba42-46d7-ae04-8a745bba1420.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-1246-1e24e152-7398-4e05-a1cd-44d5edd06059.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-1348-8598f38a-e0a5-4103-854b-dc49506af657.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-1438-2b7c39ae-71cf-4307-be2e-77f4e69de7ad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-2051-1efbcc0b-2c95-4e22-be1b-564c62369a9e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-2154-31ab6a15-458b-4eca-a48c-5d0f3c86ba87.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-2346-fdcb891a-f4f3-49b0-a322-28353c6f8c18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-2428-0e0543d5-df8a-479f-b02e-4afd7c14da08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-2602-b8b3c842-238d-4c9d-9fb6-77136fc7aba2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2614-2618-7e789b40-130f-483e-a56f-1abf4711d5ed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2615-3215-7da30474-4f65-4a64-8ec7-b4dc885b1e8c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2617-4507-1971ebc0-857b-4387-901c-932a41ebfd1d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2617-4748-3533ff0f-4f59-4390-9feb-936f6cfbedaf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202205-2617-4910-bdb9717a-e879-4e52-b4e7-8ac140dbbde9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202205-2617-4507-1971ebc0-857b-4387-901c-932a41ebfd1d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202205-2617-4748-3533ff0f-4f59-4390-9feb-936f6cfbedaf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202205-2617-4910-bdb9717a-e879-4e52-b4e7-8ac140dbbde9.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +74,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/utility/utilities_map.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/handler/handler_db.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/app.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/utility/utilities_map.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/handler/handler_user_db.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/model/user.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -76,7 +99,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/image_processing" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -93,7 +116,7 @@
       <recent name="$PROJECT_DIR$/src/config" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.handler_s3">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -228,8 +251,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.handler_s3" />
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.handler_s3" />
         <item itemvalue="Python.png2glb" />
         <item itemvalue="Python.grabcut" />
         <item itemvalue="Python.open3d_ex" />
@@ -274,6 +297,8 @@
       <workItem from="1653296550704" duration="13339000" />
       <workItem from="1653384958025" duration="42520000" />
       <workItem from="1653504512125" duration="24855000" />
+      <workItem from="1653753683608" duration="527000" />
+      <workItem from="1653997521804" duration="6597000" />
     </task>
     <servers />
   </component>
@@ -300,9 +325,9 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/namespaces/namespace_sticker.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/src/namespaces/namespace_account.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -324,7 +349,7 @@
     <SUITE FILE_PATH="coverage/capstone_project_back$app_grabcut.coverage" NAME="app_grabcut Coverage Results" MODIFIED="1653300895442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$app_vtk.coverage" NAME="stl2glb Coverage Results" MODIFIED="1653309844162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$triangle_mesh.coverage" NAME="triangle_mesh Coverage Results" MODIFIED="1653494337473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
-    <SUITE FILE_PATH="coverage/capstone_project_back$app.coverage" NAME="app Coverage Results" MODIFIED="1653554938533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$app.coverage" NAME="app 커버리지 결과" MODIFIED="1654007334779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$s3_connect_test.coverage" NAME="s3_connect_test Coverage Results" MODIFIED="1651211222042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$grabcut.coverage" NAME="grabcut Coverage Results" MODIFIED="1653531879542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
     <SUITE FILE_PATH="coverage/capstone_project_back$handler_s3.coverage" NAME="handler_s3 Coverage Results" MODIFIED="1653552985644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/handler" />

@@ -78,9 +78,10 @@ class ImageUtility:
 
 
 def grabcut(src_path: str, out_path: str,
-            x, y, w, h):
+            x_ratio, y_ratio, w_ratio, h_ratio):
     im = Image.open(src_path)
     im = ImageUtility.resize(im, 0.5)
+    print(im.width, im.height)
     im_mtr = ImageUtility.conv_pilimage_to_ndarray(im)
     copy = im_mtr.copy()
 
@@ -88,6 +89,10 @@ def grabcut(src_path: str, out_path: str,
     mask = np.zeros(im_mtr.shape[:2], np.uint8)
     bgd_model = np.zeros((1, 65), np.float64)
     fgd_model = np.zeros((1, 65), np.float64)
+    x = int(x_ratio * im.width)
+    w = int(w_ratio * im.width)
+    y = int(y_ratio * im.height)
+    h = int(h_ratio * im.height)
     start = (x, y)
     end = (x + w, y + h)
     rect = (x, y, w, h)

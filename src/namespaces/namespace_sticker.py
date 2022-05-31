@@ -15,15 +15,15 @@ from handler.handler_s3 import handler as s3_handler
 from handler.handler_sticker_db import handler_sticker_db, HandlerStickerDB
 
 namespace_sticker = Namespace('sticker', 'Api for sticker')
-
-origin_img = "images/input_ex.jpeg"
-output_img = "images/output_ex.jpeg"
-
-# Foreground rectangle
-(x, y, w, h) = (47, 78, 323, 246)
-start = (x, y)
-end = (x + w, y + h)
-rect = (x, y, w, h)
+#
+# origin_img = "images/input_ex.jpeg"
+# output_img = "images/output_ex.jpeg"
+#
+# # Foreground rectangle
+# (x, y, w, h) = (47, 78, 323, 246)
+# start = (x, y)
+# end = (x + w, y + h)
+# rect = (x, y, w, h)
 
 PREFIX_PATH_LOCAL_ORIG: Final[str] = "./orig/"
 PREFIX_PATH_REMOTE_ORIG: Final[str] = "orig/"
@@ -33,12 +33,12 @@ PREFIX_PATH_LOCAL_GLTF: Final[str] = "./glb/"
 PREFIX_PATH_REMOTE_GLTF: Final[str] = "glb/"
 
 
-def work(filename: str, max_height: int, max_size: Tuple[int, int], start_x: float, start_y: float, width: float,
-         height: float):
+def work(filename: str, max_height: int, max_size: Tuple[int, int], x_ratio: float, y_ratio: float, width_ratio: float,
+         height_ratio: float):
     local_orig_path = PREFIX_PATH_LOCAL_ORIG + filename
     local_sticker_path = PREFIX_PATH_LOCAL_STICKER + filename
     remote_sticker_path = PREFIX_PATH_REMOTE_STICKER + filename
-    grabcut(local_orig_path, local_sticker_path, start_x, start_y, width, height)
+    grabcut(local_orig_path, local_sticker_path, x_ratio, y_ratio, width_ratio, height_ratio)
     s3_handler.upload(local_sticker_path, remote_sticker_path)
     print("Remove background Complete...")
     gltf_filename = str(Path(filename).with_suffix(".glb"))
@@ -55,26 +55,27 @@ class Upload(Resource):
         # Info
         image = request.files["image"]
         uploader_gmail_id = request.form['uploader_gmail_id']
-        rectangle = [int(e) for e in request.form.getlist("rectangle[]")]
+        rectangle = [float(e) for e in request.form.getlist("rectangle[]")]
         beacon_mac = request.form['beacon_mac']
         event_id = datetime.now().strftime('%Y%m-%d%H-%M%S-') + str(uuid4())
 
         # Upload the image file
-        ext = image.filename.split('.')[-1]
         filename = uploader_gmail_id + event_id + '.' + "png"
-        local_orig_path = f'./orig/{filename}'
-        local_sticker_path = f'./sticker/{filename}'
-        remote_orig_path = f'orig/{filename}'
-        remote_sticker_path = f'sticker/{filename}'
-        sticker = Sticker(uploader_gmail_id + event_id, remote_orig_path, remote_sticker_path, uploader_gmail_id,
+        local_orig_path = f'{PREFIX_PATH_LOCAL_ORIG}{filename}'
+        remote_orig_path = f'{PREFIX_PATH_REMOTE_ORIG}{filename}'
+        remote_sticker_path = f'{PREFIX_PATH_REMOTE_STICKER}{filename}'
+        remote_glb_path = f"{PREFIX_PATH_REMOTE_GLTF}{filename}"
+        sticker = Sticker(uploader_gmail_id + event_id,
+                          remote_orig_path, remote_sticker_path,
+                          remote_glb_path, uploader_gmail_id,
                           datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                           beacon_mac, rectangle)
         image.save(local_orig_path)
         rc = s3_handler.upload(local_orig_path, remote_orig_path)
         if not rc:
-            return to_json("failure")
+            return to_json("upload_to_s3_failure")
         if not handler_sticker_db.write_info(sticker):
-            return to_json("failure")
+            return to_json("write_db_failure")
         p = Process(target=work, args=(filename, 30, (500, 500), *rectangle))
         p.start()
         return to_json("success")
