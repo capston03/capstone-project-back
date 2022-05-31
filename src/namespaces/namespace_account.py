@@ -30,7 +30,7 @@ class Login(Resource):
             nickname = user_db_handler.get_nickname(gmail_id)
             return to_json({"code": "success", "nickname": nickname})
         else:
-            return to_json({"code:": "already_logged_in"})
+            return to_json({"code": "already_logged_in"})
 
 
 @namespace_account.route('/logout')
