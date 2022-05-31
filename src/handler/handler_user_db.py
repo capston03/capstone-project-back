@@ -255,5 +255,15 @@ class UserDBHandler:
                     print(f"error : {e}")
                     return UserDBHandler.Result.UNKNOWN_ERR
 
+    def get_nickname(self, gmail_id: str):
+        with self.__connect_db() as db:
+            try:
+                with db.cursor() as cursor:
+                    sql = f"SELECT nickname FROM user WHERE gmail_id = '{gmail_id}';"
+                    cursor.execute(sql)
+                    return cursor.fetchone()[0]
+            except Exception:
+                raise
+
 
 handler_user_db = UserDBHandler(handler_db)

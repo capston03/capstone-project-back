@@ -14,22 +14,23 @@ namespace_account = Namespace('account', 'Api for account')
 class Login(Resource):
     def post(self):
         if not request.is_json:
-            return to_json('not_json')
+            return to_json({"code": "not_json"})
         params: Dict[str, str] = request.get_json()
         if not check_if_param_has_keys(params, ["user_gmail_id", "android_id", "device_model"]):
-            return to_json('invalid_input')
+            return to_json({"code": "invalid_input"})
         gmail_id = params.get("user_gmail_id")
         current_device = UserDevice(
             params.get("android_id"),
             params.get("device_model")
         )
         if not user_db_handler.is_account_existed(gmail_id):
-            return to_json('account_not_existed')
+            return to_json({"code": "account_not_existed"})
         if not user_db_handler.is_user_logged_in(gmail_id):
             user_db_handler.login(gmail_id, current_device)
-            return to_json('success')
+            nickname = user_db_handler.get_nickname(gmail_id)
+            return to_json({"code": "success", "nickname": nickname})
         else:
-            return to_json('already_logged_in')
+            return to_json({"code:": "already_logged_in"})
 
 
 @namespace_account.route('/logout')
