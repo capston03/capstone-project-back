@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0102-5329-2498a27d-d4bd-4bde-bcac-e5036fb6eff0.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0102-5329-2498a27d-d4bd-4bde-bcac-e5036fb6eff0.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0102-5510-090b5086-5731-4119-9bf0-83d4e00b0da9.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0102-5510-090b5086-5731-4119-9bf0-83d4e00b0da9.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0103-1836-b7802ca1-e741-47bd-8d33-c46aee2767b6.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0103-1836-b7802ca1-e741-47bd-8d33-c46aee2767b6.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0103-1850-f0c972da-819d-4dd3-9d0c-9349c9d1d692.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0103-1850-f0c972da-819d-4dd3-9d0c-9349c9d1d692.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image_processing/grabcut.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/image_utility.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/image_processing/png2glb.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_processing/png2glb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +108,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="gausian_filter" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="capstone-project-back" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/image_processing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/image_processing/gausian_filter.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="gaussian_blur" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,28 +174,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="image_utility" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="capstone-project-back" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/image_processing" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/image_processing/image_utility.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="png2glb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone-project-back" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -209,10 +199,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.gausian_filter" />
         <item itemvalue="Python.gaussian_blur" />
         <item itemvalue="Python.png2glb" />
         <item itemvalue="Python.handler_s3" />
-        <item itemvalue="Python.image_utility" />
       </list>
     </recent_temporary>
   </component>
@@ -255,7 +245,7 @@
       <workItem from="1653384958025" duration="42520000" />
       <workItem from="1653504512125" duration="24855000" />
       <workItem from="1653753683608" duration="527000" />
-      <workItem from="1653997521804" duration="32288000" />
+      <workItem from="1653997521804" duration="35156000" />
     </task>
     <servers />
   </component>
@@ -298,7 +288,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/image_processing/png2glb.py</url>
-          <line>124</line>
+          <line>127</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
@@ -322,11 +312,12 @@
     <SUITE FILE_PATH="coverage/capstone_project_back$app_grabcut.coverage" NAME="app_grabcut Coverage Results" MODIFIED="1653300895442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$app_vtk.coverage" NAME="stl2glb Coverage Results" MODIFIED="1653309844162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$triangle_mesh.coverage" NAME="triangle_mesh Coverage Results" MODIFIED="1653494337473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
-    <SUITE FILE_PATH="coverage/capstone_project_back$app.coverage" NAME="app 커버리지 결과" MODIFIED="1654067081677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$app.coverage" NAME="app 커버리지 결과" MODIFIED="1654098214275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$s3_connect_test.coverage" NAME="s3_connect_test Coverage Results" MODIFIED="1651211222042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$grabcut.coverage" NAME="grabcut Coverage Results" MODIFIED="1653531879542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
     <SUITE FILE_PATH="coverage/capstone_project_back$handler_s3.coverage" NAME="handler_s3 Coverage Results" MODIFIED="1653552985644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/handler" />
     <SUITE FILE_PATH="coverage/capstone_project_back$png2gltf.coverage" NAME="png2gltf Coverage Results" MODIFIED="1653385788076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$gausian_filter.coverage" NAME="gausian_filter 커버리지 결과" MODIFIED="1654097600285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
     <SUITE FILE_PATH="coverage/capstone_project_back$png2glb.coverage" NAME="png2glb 커버리지 결과" MODIFIED="1654057288926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
   </component>
 </project>

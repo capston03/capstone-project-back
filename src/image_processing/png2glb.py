@@ -1,11 +1,14 @@
 from pathlib import Path
 
 import open3d
-import numpy as np
 from PIL import Image
 from typing import Tuple
 from pygltflib.utils import glb2gltf, gltf2glb
 import cv2
+import matplotlib.pyplot as pl
+import numpy as np
+import scipy as sp
+import scipy.ndimage
 
 # Convert png to glb.
 from image_processing.image_utility import ImageUtility
