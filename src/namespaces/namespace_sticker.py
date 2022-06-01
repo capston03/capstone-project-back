@@ -6,7 +6,7 @@ from flask import request
 from flask_restx import Namespace, Resource
 
 from image_processing.png2glb import PNG2GLB
-from image_processing.grabcut import grabcut
+from image_processing.image_utility import grabcut
 from model.sticker import Sticker
 from utility.utilities import check_if_param_has_keys, to_json
 from datetime import datetime
@@ -33,19 +33,20 @@ PREFIX_PATH_LOCAL_GLTF: Final[str] = "./glb/"
 PREFIX_PATH_REMOTE_GLTF: Final[str] = "glb/"
 
 
-def work(filename: str, max_height: int, max_size: Tuple[int, int], x_ratio: float, y_ratio: float, width_ratio: float,
+def work(filename: str, min_height: int, max_height: int, max_size: Tuple[int, int], x_ratio: float, y_ratio: float,
+         width_ratio: float,
          height_ratio: float):
     local_orig_path = PREFIX_PATH_LOCAL_ORIG + filename
     local_sticker_path = PREFIX_PATH_LOCAL_STICKER + filename
     remote_sticker_path = PREFIX_PATH_REMOTE_STICKER + filename
     grabcut(local_orig_path, local_sticker_path, x_ratio, y_ratio, width_ratio, height_ratio)
-    s3_handler.upload(local_sticker_path, remote_sticker_path)
+    # s3_handler.upload(local_sticker_path, remote_sticker_path)
     print("Remove background Complete...")
     gltf_filename = str(Path(filename).with_suffix(".glb"))
     local_glb_path = PREFIX_PATH_LOCAL_GLTF + gltf_filename
     remote_glb_path = PREFIX_PATH_REMOTE_GLTF + gltf_filename
-    PNG2GLB(local_sticker_path, local_glb_path, max_height, max_size).run()
-    s3_handler.upload(local_glb_path, remote_glb_path)
+    PNG2GLB(local_sticker_path, local_glb_path, min_height, max_height, max_size).run()
+    # s3_handler.upload(local_glb_path, remote_glb_path)
     print("Build the gltf model Complete!")
 
 
@@ -77,7 +78,7 @@ class Upload(Resource):
             return to_json("upload_to_s3_failure")
         if not handler_sticker_db.write_info(sticker):
             return to_json("write_db_failure")
-        p = Process(target=work, args=(png_name, 30, (500, 500), *rectangle))
+        p = Process(target=work, args=(png_name, 10, 20, (500, 500), *rectangle))
         p.start()
         return to_json("success")
 

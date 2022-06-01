@@ -5,13 +5,17 @@ import numpy as np
 from PIL import Image
 from typing import Tuple
 from pygltflib.utils import glb2gltf, gltf2glb
-
+import cv2
 
 # Convert png to glb.
+from image_processing.image_utility import ImageUtility
+
+
 class PNG2GLB:
-    def __init__(self, png_path: str, glb_path: str, max_height: int, max_size: Tuple[int, int]):
+    def __init__(self, png_path: str, glb_path: str, min_height: int, max_height: int, max_size: Tuple[int, int]):
         self.__png_path = Path(png_path)
         self.__glb_path = Path(glb_path)
+        self.__min_height = min_height
         self.__max_height = max_height
         self.__max_size = max_size
         self.__vertices_1d = np.array([])
@@ -32,7 +36,16 @@ class PNG2GLB:
         vertices_1d = []
         for x in range(0, nrows):
             for y in range(0, ncols):
-                vertices_1d.append([x, y, img_mtr[y][x] * self.__max_height / max_px_val])
+                if img_mtr[y][x] != -1 and img_mtr[y][x] != 0:
+                    # vertices_1d.append([x, y, img_mtr[y][x] * (
+                    #         self.__max_height - self.__min_height) / max_px_val + self.__min_height])
+                    vertices_1d.append([x, y, self.__max_height])
+                elif img_mtr[y][x] == 0:
+                    vertices_1d.append([x, y, 0])
+                else:
+                    vertices_1d.append([x, y, self.__min_height])
+                # vertices_1d.append([x, y, img_mtr[y][x] * self.__max_height / max_px_val])
+                # vertices_1d.append([x, y, int(img_mtr[y][x] == -1) * 10 + int(img_mtr[y][x] != 0)])
         vertices_2d = [vertices_1d[i:i + ncols] for i in range(0, len(vertices_1d), ncols)]
         self.__vertices_1d = np.array(vertices_1d)
         self.__vertices_2d = np.array(vertices_2d)
@@ -77,10 +90,11 @@ class PNG2GLB:
         for i in range(nrows):
             for j in range(ncols):
                 color = texture_mtr[j][i]
-                if np.linalg.norm(color) > 0:
-                    color_map.append(list(color / np.linalg.norm(color)))
-                else:
-                    color_map.append(color)
+                color_map.append(color / 255)
+                # if np.linalg.norm(color) > 0:
+                #     color_map.append(list(color / np.linalg.norm(color)))
+                # else:
+                #     color_map.append(color)
         self.__color_map = np.array(color_map)
         self.__mesh.vertex_colors = open3d.utility.Vector3dVector(self.__color_map)
 
@@ -107,11 +121,15 @@ class PNG2GLB:
         grey_img_mtr = np.where(grey_img_mtr == 0, 2, grey_img_mtr)
         # Filter the transparent area.
         grey_img_mtr = grey_img_mtr * filter_mtr
+        grey_img_mtr = grey_img_mtr.astype("uint8")
+        img_border_mtr = ImageUtility.get_border_line(grey_img_mtr)
+        grey_img_mtr = np.where(img_border_mtr == 255, -1, grey_img_mtr)
 
         self.__init_vertices(grey_img_mtr)
         self.__init_triangles()
 
         texture = Image.open(self.__png_path).convert("RGB")
+        texture = ImageUtility.enhance_color(texture)
         texture.thumbnail(self.__max_size)
         texture_mtr = np.array(texture)
         self.__init_color_map(texture_mtr)
