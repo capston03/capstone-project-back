@@ -278,3 +278,4 @@ cython_debug/
 src/secure
 venv
 .idea
+.DS_Store
