@@ -11,18 +11,9 @@ class BeaconDBHandler:
         self.__handler_db = handler_db
 
     def __connect_db(self):
-        """
-        Connect to the database (AWS RDS).
-        :return: Connection
-        """
         return self.__handler_db.connect_db()
 
     def get_building_id(self, list_beacon_mac: List[str]):
-        """
-        Find id of building that the beacons are installed.
-        :param list_beacon_mac: list of beacon mac address.
-        :return: building id
-        """
         list_beacon_mac_str = [f"'{mac_addr}'" for mac_addr in list_beacon_mac]
         str_pool_beacon_mac = f"({', '.join(list_beacon_mac_str)})"
         with self.__connect_db() as db:
@@ -40,11 +31,6 @@ class BeaconDBHandler:
                 raise
 
     def get_all_beacon_in_building(self, building_id: int) -> List[Beacon]:
-        '''
-        Find all beacons installed in this building.
-        :param building_id: building id.
-        :return: list of beacon.
-        '''
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:

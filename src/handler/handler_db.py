@@ -21,10 +21,6 @@ class HandlerDB:
         self.__charset = charset
 
     def connect_db(self):
-        """
-        Connect the database (AWS RDS)
-        :return: DB connection
-        """
         return pymysql.connect(host=self.__host,
                                port=self.__port,
                                user=self.__user,
@@ -33,11 +29,6 @@ class HandlerDB:
                                charset=self.__charset)
 
     def get_all(self, table_name: str) -> List[str]:
-        """
-        Get all records in table.
-        :param table_name: Table name
-        :return:
-        """
         with self.connect_db() as db:
             try:
                 with db.cursor() as cursor:

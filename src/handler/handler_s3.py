@@ -57,7 +57,7 @@ class S3Handler:
             return False
         return True
 
-    def generate_presigned_url(self, remote_path: str, expire_time: int = 60 * 24) -> str:
+    def generate_download_url(self, remote_path: str, expire_time: int = 60 * 24) -> str:
         return self.__client.generate_presigned_url('get_object', Params={'Bucket': self.__bucket_name,
                                                                           "Key": remote_path},
                                                     ExpiresIn=expire_time)

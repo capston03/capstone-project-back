@@ -1,5 +1,5 @@
 from enum import Enum, auto
-from typing import Final
+from typing import Tuple
 
 from model.sticker import Sticker
 from .handler_db import handler_db, HandlerDB
@@ -12,41 +12,41 @@ class HandlerStickerDB:
         self.handler_db = handler_db
 
     def __connect_db(self):
-        """
-        Connect to the database.
-        :return: Connection
-        """
         return self.handler_db.connect_db()
 
-    # Write sticker info into DB
-    def write_info(self, sticker: Sticker) -> bool:
-        """
-        Write information about sticker image into the database.
-        :param sticker: Information about sticker image
-        :return: Connection
-        """
+    def read(self, sticker_id: str):
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
-                    sql = f"INSERT INTO sticker (id, img_path, " \
-                          f"sticker_path, glb_path, uploader_gmail_id, " \
-                          f"upload_time, beacon_mac, foreground_rect) " \
-                          f"VALUES('{sticker.id}', " \
-                          f"'{sticker.img_path}', " \
-                          f"'{sticker.sticker_path}'," \
-                          f"'{sticker.glb_path}', " \
-                          f"'{sticker.uploader_gmail_id}', " \
-                          f"'{sticker.upload_time}', " \
-                          f"'{sticker.beacon_mac}', " \
-                          f"'{sticker.foreground_rect}')"
+                    sql = f"SELECT * FROM sticker " \
+                          f"WHERE id = '{sticker_id}';"
                     cursor.execute(sql)
-                    db.commit()
-                    return True
+                    return list(cursor.fetchall())
             except Exception as e:
                 print(f"error : {e}")
-                return False
+                return []
 
-    def get_sticker_nearby(self, beacon_mac):
+    def write(self, sticker: Sticker) -> Tuple[int, bool]:
+        with self.__connect_db() as db:
+            try:
+                with db.cursor() as cursor:
+                    sql = f"INSERT INTO sticker (episode_id, " \
+                          f"original_img_path, thumbnail_path, sticker_path, " \
+                          f"foreground_rectangle) " \
+                          f"VALUES('{sticker.episode_id}', " \
+                          f"'{sticker.original_img_path}', " \
+                          f"'{sticker.thumbnail_path}', " \
+                          f"'{sticker.sticker_path}', " \
+                          f"'{sticker.foreground_rectangle}');"
+                    cursor.execute(sql)
+                    db.commit()
+                    sticker_id = int(cursor.lastrowid)
+                    return sticker_id, True
+            except Exception as e:
+                print(f"error : {e}")
+                return -1, False
+
+    def find_stickers_nearby_beacon(self, beacon_mac: str):
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
@@ -58,12 +58,12 @@ class HandlerStickerDB:
                 print(f"error : {e}")
                 return []
 
-    def get_user_sticker(self, gmail_id: str):
+    def find_user_stickers(self, uploader_gmail_id: str):
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
                     sql = f"SELECT * FROM sticker " \
-                          f"WHERE uploader_gmail_id = '{gmail_id}';"
+                          f"WHERE uploader_gmail_id = '{uploader_gmail_id}';"
                     cursor.execute(sql)
                     return list(cursor.fetchall())
             except Exception as e:
