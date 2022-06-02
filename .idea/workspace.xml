@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/DB_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/secure/DB_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/S3_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/secure/S3_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_s3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +246,7 @@
       <workItem from="1653504512125" duration="24855000" />
       <workItem from="1653753683608" duration="527000" />
       <workItem from="1653997521804" duration="35400000" />
-      <workItem from="1654170263437" duration="22200000" />
+      <workItem from="1654170263437" duration="22512000" />
     </task>
     <servers />
   </component>
