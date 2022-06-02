@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +245,7 @@
       <workItem from="1653504512125" duration="24855000" />
       <workItem from="1653753683608" duration="527000" />
       <workItem from="1653997521804" duration="35400000" />
-      <workItem from="1654170263437" duration="22512000" />
+      <workItem from="1654170263437" duration="22686000" />
     </task>
     <servers />
   </component>
