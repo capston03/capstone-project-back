@@ -8,8 +8,6 @@ from handler.handler_sticker_db import handler_sticker_db
 
 namespace_sticker = Namespace('sticker', 'Api for sticker')
 
-INDEX_STICKER_PATH: Final = 4
-
 
 @namespace_sticker.route("/download")
 class Download(Resource):
@@ -17,7 +15,7 @@ class Download(Resource):
         if not request.is_json:
             return to_json('not_json')
         params: Dict[str, str] = request.get_json()
-        if not check_if_param_has_keys(params, ["sticker_id"]):
+        if not check_if_param_has_keys(params, ["episode_id"]):
             return to_json('invalid_input')
-        sticker = handler_sticker_db.read(params.get("sticker_id"))
-        return to_json({"download_url": s3_handler.generate_download_url(sticker[INDEX_STICKER_PATH])})
+        sticker = handler_sticker_db.find_episode_stickers(int(params.get("episode_id")))
+        return to_json({"download_url": s3_handler.generate_download_url(sticker.sticker_path)})

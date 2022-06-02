@@ -11,6 +11,6 @@ class Sticker:
         self.original_img_path = original_img_path
         self.thumbnail_path = thumbnail_path
         self.sticker_path = sticker_path
-        self.foreground_rectangle = " ".join(["{:.4f}".format(point) for point in foreground_rectangle])
+        self.foreground_rectangle = " ".join(["{:.4f}".format(val) for val in foreground_rectangle])
         self.episode_id = episode_id
         self.sticker_id = sticker_id

@@ -1,5 +1,4 @@
 from multiprocessing import Process
-from pathlib import Path
 from typing import Dict, Final, Tuple
 
 from flask import request
@@ -21,34 +20,33 @@ namespace_episode = Namespace("episode", "Api for episode")
 INDEX_EPISODE_ID: Final = 0
 
 
+def make_sticker(local_original_img_path: str, remote_original_img_path: str,
+                 local_thumbnail_path: str, remote_thumbnail_path: str,
+                 local_sticker_path: str, remote_sticker_path: str,
+                 min_height: int, max_height: int, max_size: Tuple[int, int],
+                 x_ratio: float, y_ratio: float, width_ratio: float, height_ratio: float):
+    print("Save the original image into remote storage")
+    s3_handler.upload(local_original_img_path, remote_original_img_path)
+
+    print("Remove background [In progress]")
+    grabcut(local_original_img_path, local_thumbnail_path, x_ratio, y_ratio, width_ratio, height_ratio)
+    print("Remove background [Complete]")
+    s3_handler.upload(local_thumbnail_path, remote_thumbnail_path)
+
+    print("Build the .GLB model [In progress]")
+    PNG2GLB(local_thumbnail_path, local_sticker_path, min_height, max_height, max_size).run()
+    print("Build the .GLB model [Complete]")
+    s3_handler.upload(local_sticker_path, remote_sticker_path)
+
+
 @namespace_episode.route("/upload")
 class Upload(Resource):
-    PREFIX_PATH_LOCAL_ORIGNAL_IMG: Final[str] = "./original_img/"
+    PREFIX_PATH_LOCAL_ORIGNAL_IMG: Final[str] = "./data/original_img/"
     PREFIX_PATH_REMOTE_ORIGNAL_IMG: Final[str] = "original_img/"
-    PREFIX_PATH_LOCAL_THUMBNAIL: Final[str] = "./thumbnail/"
+    PREFIX_PATH_LOCAL_THUMBNAIL: Final[str] = "./data/thumbnail/"
     PREFIX_PATH_REMOTE_THUMBNAIL: Final[str] = "thumbnail/"
-    PREFIX_PATH_LOCAL_STICKER: Final[str] = "./sticker/"
+    PREFIX_PATH_LOCAL_STICKER: Final[str] = "./data/sticker/"
     PREFIX_PATH_REMOTE_STICKER: Final[str] = "sticker/"
-
-    @staticmethod
-    def make_sticker(image, local_original_img_path: str, remote_original_img_path: str,
-                     local_thumbnail_path: str, remote_thumbnail_path: str,
-                     local_sticker_path: str, remote_sticker_path: str,
-                     min_height: int, max_height: int, max_size: Tuple[int, int],
-                     x_ratio: float, y_ratio: float, width_ratio: float, height_ratio: float):
-        print("Save the original image into local/remote storage")
-        image.save(local_original_img_path)
-        # s3_handler.upload(local_original_img_path, remote_original_img_path)
-
-        print("Remove background [In progress]")
-        grabcut(local_original_img_path, local_thumbnail_path, x_ratio, y_ratio, width_ratio, height_ratio)
-        print("Remove background [Complete]")
-        # s3_handler.upload(local_thumbnail_path, remote_thumbnail_path)
-
-        print("Build the .GLB model [In progress]")
-        PNG2GLB(local_thumbnail_path, local_sticker_path, min_height, max_height, max_size).run()
-        print("Build the .GLB model [Complete]")
-        # s3_handler.upload(local_sticker_path, remote_sticker_path)
 
     def post(self):
         title = request.form["title"]
@@ -63,7 +61,7 @@ class Upload(Resource):
 
         image = request.files["image"]
         unique_filename = f"{uploader_gmail_id}-{upload_time}-{uuid4()}"
-        foreground_rectangle = request.form.getlist("foreground_rectangle[]")
+        foreground_rectangle = [float(val) for val in request.form.getlist("foreground_rectangle[]")]
         local_original_img_path = f'{Upload.PREFIX_PATH_LOCAL_ORIGNAL_IMG}{unique_filename}.png'
         remote_original_img_path = f'{Upload.PREFIX_PATH_REMOTE_ORIGNAL_IMG}{unique_filename}.png'
         local_thumbnail_path = f"{Upload.PREFIX_PATH_LOCAL_THUMBNAIL}{unique_filename}.png"
@@ -73,10 +71,12 @@ class Upload(Resource):
         sticker = Sticker(remote_original_img_path, remote_thumbnail_path,
                           remote_sticker_path, foreground_rectangle, episode_id)
         sticker_id, ok = handler_sticker_db.write(sticker)
+        print("Save the original image into local storage")
+        image.save(local_original_img_path)
         if not ok:
             return to_json("write_sticker_db_failure")
-        process_making_sticker = Process(target=Upload.make_sticker,
-                                         args=(image, local_original_img_path, remote_original_img_path,
+        process_making_sticker = Process(target=make_sticker,
+                                         args=(local_original_img_path, remote_original_img_path,
                                                local_thumbnail_path, remote_thumbnail_path,
                                                local_sticker_path, remote_sticker_path,
                                                10, 20, (500, 500), *foreground_rectangle))
@@ -109,7 +109,7 @@ class FindEpisodesNearbyBeacon(Resource):
                         for index, episode in enumerate(episodes)})
 
 
-@namespace_episode.route("/find_episodes_nearby_beacon")
+@namespace_episode.route("/find_user_episodes")
 class FindUserEpisodes(Resource):
     def post(self):
         if not request.is_json:

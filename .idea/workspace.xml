@@ -3,141 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blueprints/blueprints.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprints/blueprints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0114-3359-8af53e26-f909-4b58-8356-ec04a8a6d3cb.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0114-3359-8af53e26-f909-4b58-8356-ec04a8a6d3cb.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0114-3802-b1f48b32-1e50-4881-893d-ae6d5198db4d.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0114-3802-b1f48b32-1e50-4881-893d-ae6d5198db4d.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0114-3920-71584a5f-0323-4ae3-b7f5-b3d66cdf0844.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0114-3920-71584a5f-0323-4ae3-b7f5-b3d66cdf0844.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0114-4246-b572df6a-7143-4ba4-aaba-835afa9f14a2.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0114-4246-b572df6a-7143-4ba4-aaba-835afa9f14a2.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0115-0048-98d27d60-6e15-4bfe-a2ae-15edc5ca0469.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0115-0048-98d27d60-6e15-4bfe-a2ae-15edc5ca0469.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0115-0553-bd7a6dd1-a739-4c1e-adbb-9a8a3c3ff2e3.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0115-0553-bd7a6dd1-a739-4c1e-adbb-9a8a3c3ff2e3.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0115-0758-fda0d5ac-e8bd-4810-a0a2-99fa4eae0592.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0115-0758-fda0d5ac-e8bd-4810-a0a2-99fa4eae0592.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0115-1125-120ed7ed-6215-46b4-89e2-69640d584785.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0115-1125-120ed7ed-6215-46b4-89e2-69640d584785.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0116-0517-971f9f12-af75-4108-8527-8ec04fad07af.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0116-0517-971f9f12-af75-4108-8527-8ec04fad07af.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0116-0811-1becd423-6578-4cd8-8c2f-08cfb7bd713e.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0116-0811-1becd423-6578-4cd8-8c2f-08cfb7bd713e.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0200-4344-52b1dcb2-78c5-4d06-87c5-375c43090be3.glb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/glb/wordnumperiod202206-0200-4344-52b1dcb2-78c5-4d06-87c5-375c43090be3.gltf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler_beacon_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_beacon_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_s3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler_episode_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_episode_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/handler/handler_sticker_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_sticker_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/sticker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_episode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_episode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0102-4022-73ac4706-a3ce-4d5b-9a40-ff2e2a960fe7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0102-4159-8013064d-7a0a-4cb6-bd74-3ef9b82a7292.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0102-4303-03b2430f-5ac0-4f7c-98f9-019678e3d391.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0102-4533-e021f318-b7c7-4c22-affe-613f7943f997.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0102-4823-b0540276-c67e-43ab-8fa0-853902068965.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0102-5329-2498a27d-d4bd-4bde-bcac-e5036fb6eff0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0102-5510-090b5086-5731-4119-9bf0-83d4e00b0da9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0103-1836-b7802ca1-e741-47bd-8d33-c46aee2767b6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0103-1850-f0c972da-819d-4dd3-9d0c-9349c9d1d692.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0105-3218-f8f76d61-ff6d-4788-9b1a-bbc46b46fa11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0105-3256-2f0d5c78-c663-4d29-bb8a-d57774828715.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0105-3627-a9cd50c0-4e3d-4599-9244-3bb2dce48b9a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0105-3923-05ba4bb2-bee5-468b-bb55-0261fd3c7cc0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-1954-56ba827f-c143-4f9e-a52b-3ab6bb1f1dfd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-2147-5b9738c8-c6c1-4091-999f-1ca3e40d23bb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-2504-5525d1c9-b045-4c6f-bfd3-89cb57b015ea.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-2931-129a81af-9785-4a1b-b78c-1058884cfdb8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-3341-0d820ee0-7cb3-46ac-81f5-31197f20ac25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-3425-fe31f0c4-6c29-4a5c-a692-e5e51426a29d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-3453-56bb154b-9a45-4e65-bb8e-5d6c7e5ee412.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-3744-b0269c06-7e2a-4e49-96fb-25afce541200.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-3854-4e5ad768-615f-4cc5-8e6e-10a82fa2589e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-3923-62b7787b-acba-416e-bc71-005224e25756.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-4100-7c1834e9-64ae-42c8-8f58-ee7e42e2d744.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-4204-c7e7cf06-1349-4b71-98fe-4bfd6866d969.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-4340-6fe2ba15-68de-4348-ae48-e141c947b436.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-4618-136729a5-5fb1-4764-a0f3-beef1304f7a9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-4828-527464d3-9498-4683-bbf9-2b17b5b68a2e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-4855-2ce072c2-8b82-4ff3-9e9b-61543f384de4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0113-5652-c4be3bf6-fb76-4fa7-8120-93c33d9bb83b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-0418-fbef90f9-9d4f-4f55-8ac0-aa3788c58b8e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-0824-7a3b61f4-f997-48b4-af13-67387d568a1f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-0954-c6a9f7ca-5538-40d9-b929-6cf1b56e267d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-1456-7abca4bf-3a95-48b6-8e13-782b9487fa2f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-1625-eea225cf-cdd2-4843-a192-20f080246d3e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-1800-2ca0a405-6be3-4b47-86ee-4ed62c25e97e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-2034-7d5cf085-4845-4b68-8afc-8b9a15960e47.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-2422-6b7347d9-df94-4076-808f-8c73fdd96a06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-2557-0ac2fe81-bde7-42e1-847d-f33fbb3c0b04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-2858-488b156d-ccfd-4bd2-8a68-ef4471398b4c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-3036-54d5ef9b-5574-4c31-8c5a-ae7d178e5a4f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-3359-8af53e26-f909-4b58-8356-ec04a8a6d3cb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-3802-b1f48b32-1e50-4881-893d-ae6d5198db4d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-3920-71584a5f-0323-4ae3-b7f5-b3d66cdf0844.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0114-4246-b572df6a-7143-4ba4-aaba-835afa9f14a2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0115-0048-98d27d60-6e15-4bfe-a2ae-15edc5ca0469.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0115-0553-bd7a6dd1-a739-4c1e-adbb-9a8a3c3ff2e3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0115-0758-fda0d5ac-e8bd-4810-a0a2-99fa4eae0592.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0115-1125-120ed7ed-6215-46b4-89e2-69640d584785.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0116-0451-c974233a-0a14-4cc9-9043-9f3c2be0f792.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0116-0517-971f9f12-af75-4108-8527-8ec04fad07af.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0116-0811-1becd423-6578-4cd8-8c2f-08cfb7bd713e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orig/wordnumperiod202206-0200-4344-52b1dcb2-78c5-4d06-87c5-375c43090be3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0102-4022-73ac4706-a3ce-4d5b-9a40-ff2e2a960fe7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0102-4159-8013064d-7a0a-4cb6-bd74-3ef9b82a7292.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0102-4303-03b2430f-5ac0-4f7c-98f9-019678e3d391.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0102-4533-e021f318-b7c7-4c22-affe-613f7943f997.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0102-4823-b0540276-c67e-43ab-8fa0-853902068965.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0102-5329-2498a27d-d4bd-4bde-bcac-e5036fb6eff0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0102-5510-090b5086-5731-4119-9bf0-83d4e00b0da9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0103-1836-b7802ca1-e741-47bd-8d33-c46aee2767b6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0103-1850-f0c972da-819d-4dd3-9d0c-9349c9d1d692.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0105-3218-f8f76d61-ff6d-4788-9b1a-bbc46b46fa11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0105-3256-2f0d5c78-c663-4d29-bb8a-d57774828715.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0105-3627-a9cd50c0-4e3d-4599-9244-3bb2dce48b9a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0105-3923-05ba4bb2-bee5-468b-bb55-0261fd3c7cc0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-1954-56ba827f-c143-4f9e-a52b-3ab6bb1f1dfd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-2147-5b9738c8-c6c1-4091-999f-1ca3e40d23bb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-2504-5525d1c9-b045-4c6f-bfd3-89cb57b015ea.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-2931-129a81af-9785-4a1b-b78c-1058884cfdb8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-3341-0d820ee0-7cb3-46ac-81f5-31197f20ac25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-3425-fe31f0c4-6c29-4a5c-a692-e5e51426a29d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-3453-56bb154b-9a45-4e65-bb8e-5d6c7e5ee412.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-3744-b0269c06-7e2a-4e49-96fb-25afce541200.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-3854-4e5ad768-615f-4cc5-8e6e-10a82fa2589e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-3923-62b7787b-acba-416e-bc71-005224e25756.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-4100-7c1834e9-64ae-42c8-8f58-ee7e42e2d744.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-4204-c7e7cf06-1349-4b71-98fe-4bfd6866d969.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-4340-6fe2ba15-68de-4348-ae48-e141c947b436.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-4618-136729a5-5fb1-4764-a0f3-beef1304f7a9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-4828-527464d3-9498-4683-bbf9-2b17b5b68a2e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-4855-2ce072c2-8b82-4ff3-9e9b-61543f384de4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0113-5652-c4be3bf6-fb76-4fa7-8120-93c33d9bb83b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-0418-fbef90f9-9d4f-4f55-8ac0-aa3788c58b8e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-0824-7a3b61f4-f997-48b4-af13-67387d568a1f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-0954-c6a9f7ca-5538-40d9-b929-6cf1b56e267d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-1456-7abca4bf-3a95-48b6-8e13-782b9487fa2f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-1625-eea225cf-cdd2-4843-a192-20f080246d3e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-1800-2ca0a405-6be3-4b47-86ee-4ed62c25e97e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-2034-7d5cf085-4845-4b68-8afc-8b9a15960e47.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-2422-6b7347d9-df94-4076-808f-8c73fdd96a06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-2557-0ac2fe81-bde7-42e1-847d-f33fbb3c0b04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-2858-488b156d-ccfd-4bd2-8a68-ef4471398b4c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-3036-54d5ef9b-5574-4c31-8c5a-ae7d178e5a4f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-3359-8af53e26-f909-4b58-8356-ec04a8a6d3cb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-3802-b1f48b32-1e50-4881-893d-ae6d5198db4d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-3920-71584a5f-0323-4ae3-b7f5-b3d66cdf0844.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0114-4246-b572df6a-7143-4ba4-aaba-835afa9f14a2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0115-0048-98d27d60-6e15-4bfe-a2ae-15edc5ca0469.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0115-0553-bd7a6dd1-a739-4c1e-adbb-9a8a3c3ff2e3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0115-0758-fda0d5ac-e8bd-4810-a0a2-99fa4eae0592.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0115-1125-120ed7ed-6215-46b4-89e2-69640d584785.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0116-0517-971f9f12-af75-4108-8527-8ec04fad07af.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0116-0811-1becd423-6578-4cd8-8c2f-08cfb7bd713e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sticker/wordnumperiod202206-0200-4344-52b1dcb2-78c5-4d06-87c5-375c43090be3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stl/cup.stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_thumbnail.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_thumbnail.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,7 +253,7 @@
       <workItem from="1653504512125" duration="24855000" />
       <workItem from="1653753683608" duration="527000" />
       <workItem from="1653997521804" duration="35400000" />
-      <workItem from="1654170263437" duration="13172000" />
+      <workItem from="1654170263437" duration="18532000" />
     </task>
     <servers />
   </component>
@@ -421,6 +294,26 @@
           <line>127</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/namespaces/namespace_episode.py</url>
+          <line>72</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/handler/handler_sticker_db.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/handler/handler_sticker_db.py</url>
+          <line>87</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/namespaces/namespace_sticker.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -442,7 +335,7 @@
     <SUITE FILE_PATH="coverage/capstone_project_back$app_grabcut.coverage" NAME="app_grabcut Coverage Results" MODIFIED="1653300895442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$app_vtk.coverage" NAME="stl2glb Coverage Results" MODIFIED="1653309844162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$triangle_mesh.coverage" NAME="triangle_mesh Coverage Results" MODIFIED="1653494337473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
-    <SUITE FILE_PATH="coverage/capstone_project_back$app.coverage" NAME="app 커버리지 결과" MODIFIED="1654183952769" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/capstone_project_back$app.coverage" NAME="app 커버리지 결과" MODIFIED="1654189265157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$s3_connect_test.coverage" NAME="s3_connect_test Coverage Results" MODIFIED="1651211222042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/capstone_project_back$grabcut.coverage" NAME="grabcut Coverage Results" MODIFIED="1653531879542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/image_processing" />
     <SUITE FILE_PATH="coverage/capstone_project_back$handler_s3.coverage" NAME="handler_s3 Coverage Results" MODIFIED="1653552985644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/handler" />

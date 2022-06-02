@@ -20,8 +20,11 @@ blueprint_building = Blueprint('building', __name__, url_prefix='/building')
 api = Api(blueprint_building)
 api.add_namespace(namespace_building, '/')
 
+blueprint_episode = Blueprint("episode", __name__, url_prefix="/episode")
+api = Api(blueprint_episode)
+api.add_namespace(namespace_episode, "/")
+
 blueprint_image = Blueprint('image', __name__, url_prefix='/image')
 api = Api(blueprint_image)
-api.add_namespace(namespace_sticker, '/sticker')
 api.add_namespace(namespace_thumbnail, "/thumbnail")
-api.add_namespace(namespace_episode, "/episode")
+api.add_namespace(namespace_sticker, '/sticker')
