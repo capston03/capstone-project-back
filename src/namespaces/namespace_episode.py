@@ -5,7 +5,7 @@ from flask import request
 from flask_restx import Namespace, Resource
 
 from image_processing.png2glb import PNG2GLB
-from image_processing.image_utility import grabcut
+from image_processing.boundary_recognizer import BoundaryRecognizer
 from model.episode import Episode
 from model.sticker import Sticker
 from utility.utilities import check_if_param_has_keys, to_json
@@ -22,14 +22,21 @@ INDEX_EPISODE_ID: Final = 0
 
 def make_sticker(local_original_img_path: str, remote_original_img_path: str,
                  local_thumbnail_path: str, remote_thumbnail_path: str,
-                 local_sticker_path: str, remote_sticker_path: str,
+                 local_sticker_path: str, remote_sticker_path: str, is_human: bool,
                  min_height: int, max_height: int, max_size: Tuple[int, int],
                  x_ratio: float, y_ratio: float, width_ratio: float, height_ratio: float):
     print("Save the original image into remote storage")
     s3_handler.upload(local_original_img_path, remote_original_img_path)
 
     print("Remove background [In progress]")
-    grabcut(local_original_img_path, local_thumbnail_path, x_ratio, y_ratio, width_ratio, height_ratio)
+    if is_human:
+        print("A")
+        BoundaryRecognizer().recognize_human(local_original_img_path, local_thumbnail_path)
+    else:
+        print("B")
+        BoundaryRecognizer().recognize_object(local_original_img_path, local_thumbnail_path, x_ratio, y_ratio,
+                                              width_ratio,
+                                              height_ratio)
     print("Remove background [Complete]")
     s3_handler.upload(local_thumbnail_path, remote_thumbnail_path)
 
@@ -54,6 +61,7 @@ class Upload(Resource):
         uploader_gmail_id = request.form["uploader_gmail_id"]
         upload_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         beacon_mac = request.form["beacon_mac"]
+        is_human = bool(request.form["is_human"])
         episode = Episode(title, content, uploader_gmail_id, upload_time, beacon_mac)
         episode_id, ok = handler_episode_db.write(episode)
         if not ok:
@@ -78,7 +86,7 @@ class Upload(Resource):
         process_making_sticker = Process(target=make_sticker,
                                          args=(local_original_img_path, remote_original_img_path,
                                                local_thumbnail_path, remote_thumbnail_path,
-                                               local_sticker_path, remote_sticker_path,
+                                               local_sticker_path, remote_sticker_path, is_human,
                                                10, 20, (500, 500), *foreground_rectangle))
         process_making_sticker.start()
         return to_json("success")
