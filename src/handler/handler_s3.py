@@ -2,7 +2,7 @@ from typing import Optional
 import boto3
 from botocore.client import BaseClient
 
-from config.S3_config import *
+from secure.S3_config import *
 
 
 # Handler for AWS S3 Storage

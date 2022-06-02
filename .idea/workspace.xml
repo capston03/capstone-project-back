@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="951bef39-941e-46bc-927d-56f68b184e2d" name="변경" comment="변경">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprints/blueprints.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprints/blueprints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler_episode_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_episode_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler_sticker_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_sticker_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/sticker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_episode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_episode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_sticker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/namespaces/namespace_thumbnail.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/namespaces/namespace_thumbnail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/DB_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/secure/DB_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/S3_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/secure/S3_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler_s3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +82,11 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/secure" />
       <recent name="$PROJECT_DIR$/src/data" />
       <recent name="$PROJECT_DIR$/src/image_processing" />
       <recent name="$PROJECT_DIR$/src/stl" />
       <recent name="$PROJECT_DIR$/src/utility" />
-      <recent name="$PROJECT_DIR$/src/handler" />
     </key>
   </component>
   <component name="RunManager" selected="Python.app">
@@ -253,7 +250,7 @@
       <workItem from="1653504512125" duration="24855000" />
       <workItem from="1653753683608" duration="527000" />
       <workItem from="1653997521804" duration="35400000" />
-      <workItem from="1654170263437" duration="18532000" />
+      <workItem from="1654170263437" duration="22200000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,7 @@
-from typing import Dict, List
+from typing import List
 import pymysql
 
-from config.DB_config import DB_CONFIG
+from secure.DB_config import DB_CONFIG
 
 
 # Handler used to handle the AWS RDS database.
