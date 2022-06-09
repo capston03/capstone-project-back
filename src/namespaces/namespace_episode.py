@@ -11,9 +11,9 @@ from model.sticker import Sticker
 from utility.utilities import check_if_param_has_keys, to_json
 from datetime import datetime
 from uuid import uuid4
-from handler.handler_s3 import handler as s3_handler
-from handler.handler_episode_db import handler_episode_db
-from handler.handler_sticker_db import handler_sticker_db
+from handler.S3_handler import handler as s3_handler
+from handler.episode_DB_handler import episode_DB_handler
+from handler.sticker_DB_handler import sticker_DB_handler
 
 namespace_episode = Namespace("episode", "Api for episode")
 
@@ -55,8 +55,10 @@ class Upload(Resource):
         upload_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         beacon_mac = request.form["beacon_mac"]
         episode = Episode(title, content, uploader_gmail_id, upload_time, beacon_mac)
-        episode_id, ok = handler_episode_db.write(episode)
-        if not ok:
+        try:
+            episode_id = episode_DB_handler.write(episode)
+        except Exception as e:
+            print(str(e))
             return to_json("write_episode_db_failure")
 
         image = request.files["image"]
@@ -70,11 +72,14 @@ class Upload(Resource):
         remote_sticker_path = f"{Upload.PREFIX_PATH_REMOTE_STICKER}{unique_filename}.glb"
         sticker = Sticker(remote_original_img_path, remote_thumbnail_path,
                           remote_sticker_path, foreground_rectangle, episode_id)
-        sticker_id, ok = handler_sticker_db.write(sticker)
+        try:
+            sticker_id = sticker_DB_handler.write(sticker)
+        except Exception as e:
+            print(str(e))
+            return to_json("write_sticker_db_failure")
+
         print("Save the original image into local storage")
         image.save(local_original_img_path)
-        if not ok:
-            return to_json("write_sticker_db_failure")
         process_making_sticker = Process(target=make_sticker,
                                          args=(local_original_img_path, remote_original_img_path,
                                                local_thumbnail_path, remote_thumbnail_path,
@@ -92,7 +97,11 @@ class Download(Resource):
         params: Dict[str, str] = request.get_json()
         if not check_if_param_has_keys(params, ["episode_id"]):
             return to_json('invalid_input')
-        episode = handler_episode_db.read(params.get("episode_id"))
+        try:
+            episode = episode_DB_handler.read(params.get("episode_id"))
+        except Exception as e:
+            print(str(e))
+            return to_json("error")
         return to_json(episode.__dict__)
 
 
@@ -104,7 +113,11 @@ class FindEpisodesNearbyBeacon(Resource):
         params: Dict[str, str] = request.get_json()
         if not check_if_param_has_keys(params, ["beacon_mac"]):
             return to_json('invalid_input')
-        episodes = handler_episode_db.find_episodes_nearby_beacon(params.get("beacon_mac"))
+        try:
+            episodes = episode_DB_handler.find_episodes_nearby_beacon(params.get("beacon_mac"))
+        except Exception as e:
+            print(str(e))
+            return to_json("error")
         return to_json({index: episode.__dict__
                         for index, episode in enumerate(episodes)})
 
@@ -117,6 +130,10 @@ class FindUserEpisodes(Resource):
         params: Dict[str, str] = request.get_json()
         if not check_if_param_has_keys(params, ["uploader_gmail_id"]):
             return to_json('invalid_input')
-        episodes = handler_episode_db.find_user_episodes(params.get("uploader_gmail_id"))
+        try:
+            episodes = episode_DB_handler.find_user_episodes(params.get("uploader_gmail_id"))
+        except Exception as e:
+            print(str(e))
+            return to_json("error")
         return to_json({index: episode.__dict__
                         for index, episode in enumerate(episodes)})
