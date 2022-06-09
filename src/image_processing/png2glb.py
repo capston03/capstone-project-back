@@ -137,6 +137,7 @@ class PNG2GLB:
         :return: None
         """
         img = Image.open(self.__png_path)
+        img = img.transpose(Image.FLIP_LEFT_RIGHT)
         img.thumbnail(self.__max_size)
         alpha_mtr = np.array(img.convert("RGBA"))[..., 3]
         filter_mtr = np.where(alpha_mtr == 0, 0, 1)
@@ -158,6 +159,7 @@ class PNG2GLB:
         self.__init_mesh_triangles()
 
         texture = Image.open(self.__png_path).convert("RGB")
+        texture = texture.transpose(Image.FLIP_LEFT_RIGHT)
         texture = ImageUtility.enhance_color(texture)
         texture.thumbnail(self.__max_size)
         texture_mtr = np.array(texture)
