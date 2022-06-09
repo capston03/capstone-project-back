@@ -5,7 +5,7 @@ from typing import List, Final
 import datetime
 
 from model.user_device import UserDevice
-from DB_handler import DB_handler, DBHandler
+from handler.DB_handler import DB_handler, DBHandler
 
 # Handler for user DB
 from utility.utilities import make_error_message
@@ -215,8 +215,7 @@ class UserDBHandler:
         try:
             last_android_id = self.__get_list_android_id(gmail_id)[-1]
         except Exception as e:
-            print(f"error : {e}")
-            return UserDBHandler.Result.UNKNOWN_ERR
+            raise Exception(make_error_message(str(e)))
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:

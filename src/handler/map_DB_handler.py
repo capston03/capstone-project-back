@@ -4,7 +4,7 @@ from model.building import Building
 from model.gps_coordinate import GPSCoordinate
 from utility.utilities import make_error_message
 from utility.utilities_map import UtilitiesMap
-from DB_handler import DBHandler, DB_handler
+from handler.DB_handler import DBHandler, DB_handler
 
 
 class MapDBHandler:
@@ -24,12 +24,9 @@ class MapDBHandler:
         with self.__connect_db() as db:
             try:
                 with db.cursor() as cursor:
-                    print(f"latitude range : {latitude_range[0]} ~ {latitude_range[1]}")
-                    print(f"longitude range : {longitude_range[0]} ~ {longitude_range[1]}")
                     sql = f"SELECT * FROM building " \
                           f"WHERE (latitude BETWEEN {latitude_range[0]} AND {latitude_range[1]}) " \
                           f"AND (longitude BETWEEN {longitude_range[0]} AND {longitude_range[1]});"
-                    print(sql)
                     cursor.execute(sql)
                     list_building = [Building(int(building[0]),
                                               building[1],

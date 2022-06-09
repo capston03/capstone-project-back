@@ -3,7 +3,7 @@ from typing import Tuple
 
 from model.episode import Episode
 from model.sticker import Sticker
-from DB_handler import DB_handler, DBHandler
+from handler.DB_handler import DB_handler, DBHandler
 from utility.utilities import make_error_message
 
 

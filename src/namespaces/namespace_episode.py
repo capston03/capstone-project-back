@@ -8,7 +8,7 @@ from image_processing.png2glb import PNG2GLB
 from image_processing.image_utility import grabcut
 from model.episode import Episode
 from model.sticker import Sticker
-from utility.utilities import check_if_param_has_keys, to_json
+from utility.utilities import check_if_param_has_keys, to_json, make_log_message, make_error_message
 from datetime import datetime
 from uuid import uuid4
 from handler.S3_handler import handler as s3_handler
@@ -25,17 +25,17 @@ def make_sticker(local_original_img_path: str, remote_original_img_path: str,
                  local_sticker_path: str, remote_sticker_path: str,
                  min_height: int, max_height: int, max_size: Tuple[int, int],
                  x_ratio: float, y_ratio: float, width_ratio: float, height_ratio: float):
-    print("Save the original image into remote storage")
+    print(make_log_message("Save the original image into remote storage"))
     s3_handler.upload(local_original_img_path, remote_original_img_path)
 
-    print("Remove background [In progress]")
+    print(make_log_message("Remove background [In progress]"))
     grabcut(local_original_img_path, local_thumbnail_path, x_ratio, y_ratio, width_ratio, height_ratio)
-    print("Remove background [Complete]")
+    print(make_log_message("Remove background [Complete]"))
     s3_handler.upload(local_thumbnail_path, remote_thumbnail_path)
 
-    print("Build the .GLB model [In progress]")
+    print(make_log_message("Build the .GLB model [In progress]"))
     PNG2GLB(local_thumbnail_path, local_sticker_path, min_height, max_height, max_size).run()
-    print("Build the .GLB model [Complete]")
+    print(make_log_message("Build the .GLB model [Complete]"))
     s3_handler.upload(local_sticker_path, remote_sticker_path)
 
 
@@ -78,13 +78,13 @@ class Upload(Resource):
             print(str(e))
             return to_json("write_sticker_db_failure")
 
-        print("Save the original image into local storage")
+        print(make_log_message("Save the original image into local storage"))
         image.save(local_original_img_path)
         process_making_sticker = Process(target=make_sticker,
                                          args=(local_original_img_path, remote_original_img_path,
                                                local_thumbnail_path, remote_thumbnail_path,
                                                local_sticker_path, remote_sticker_path,
-                                               10, 20, (500, 500), *foreground_rectangle))
+                                               1, 21, (500, 500), *foreground_rectangle))
         process_making_sticker.start()
         return to_json("success")
 
@@ -108,13 +108,17 @@ class Download(Resource):
 @namespace_episode.route("/find_episodes_nearby_beacon")
 class FindEpisodesNearbyBeacon(Resource):
     def post(self):
-        if not request.is_json:
-            return to_json('not_json')
-        params: Dict[str, str] = request.get_json()
-        if not check_if_param_has_keys(params, ["beacon_mac"]):
-            return to_json('invalid_input')
         try:
-            episodes = episode_DB_handler.find_episodes_nearby_beacon(params.get("beacon_mac"))
+            beacon_mac = request.form["beacon_mac"]
+            already_downloaded_episode_id_list = [int(val) for val in
+                                                  request.form.getlist("already_downloaded_episode_id[]")]
+        except Exception as e:
+            print(make_error_message(str(e)))
+            return to_json("error")
+        try:
+            episodes = episode_DB_handler.find_episodes_nearby_beacon(beacon_mac)
+            episodes = [episode for episode in episodes
+                        if episode.identifier not in already_downloaded_episode_id_list]
         except Exception as e:
             print(str(e))
             return to_json("error")

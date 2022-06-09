@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 from model.beacon import Beacon
 from typing import List
-from DB_handler import DBHandler, DB_handler
+from handler.DB_handler import DBHandler, DB_handler
 from utility.utilities import make_error_message
 
 

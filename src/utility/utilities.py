@@ -18,8 +18,8 @@ def check_if_param_has_keys(params: Dict[str, str], keys: List[str]):
 
 
 def make_log_message(message: str) -> str:
-    return f"<LOG [{inspect.stack()[2][3]}]> {message}"
+    return f"<LOG [{inspect.stack()[1][3]}]> {message}"
 
 
 def make_error_message(message: str) -> str:
-    return f"<ERROR [{inspect.stack()[2][3]}]> {message}"
+    return f"<ERROR [{inspect.stack()[1][3]}]> {message}"
