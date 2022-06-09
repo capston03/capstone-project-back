@@ -279,3 +279,4 @@ src/secure
 venv
 .idea
 **/.DS_Store
+/data
