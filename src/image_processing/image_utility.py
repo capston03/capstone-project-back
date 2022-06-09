@@ -120,6 +120,7 @@ def grabcut(src_path: str, out_path: str,
 
     # Apply the grabcut algorith.
     cv2.grabCut(im_mtr, mask, rect, bgd_model, fgd_model, 10, cv2.GC_INIT_WITH_RECT)
+
     bg_mask = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
     grabcut_result = im_mtr * bg_mask[:, :, np.newaxis]
     rm_bg_result = ImageUtility.rm_black_bg(ImageUtility.conv_ndarray_to_cv2_image(grabcut_result))
