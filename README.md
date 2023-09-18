@@ -28,4 +28,4 @@ Flask
 
 ---
 ## 프로젝트 설명
-[Notion](https://seongchancho.notion.site/Sticker-3D-4ada74af053643a79892de8d07e634a6)
+[Notion]([https://seongchancho.notion.site/Sticker-3D-4ada74af053643a79892de8d07e634a6](https://seongchancho.notion.site/Sticker-3D-e2433b91f936469b8ac129ecd8ef1cf4?pvs=4)https://seongchancho.notion.site/Sticker-3D-e2433b91f936469b8ac129ecd8ef1cf4?pvs=4)
