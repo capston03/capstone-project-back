@@ -27,5 +27,12 @@ Flask
 - utility: 공용으로 이용 가능한 코드
 
 ---
+
+## 아키텍처
+
+![image](https://github.com/capston03/capstone-project-back/assets/63490601/0e6db58a-df1f-430f-ada8-0072be75a81e)
+
+---
+
 ## 프로젝트 설명
 [Notion](https://seongchancho.notion.site/Sticker-3D-4ada74af053643a79892de8d07e634a6](https://seongchancho.notion.site/Sticker-3D-e2433b91f936469b8ac129ecd8ef1cf4?pvs=4)https://seongchancho.notion.site/Sticker-3D-e2433b91f936469b8ac129ecd8ef1cf4?pvs=4)
